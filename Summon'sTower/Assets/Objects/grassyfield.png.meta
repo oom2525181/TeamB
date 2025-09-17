@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      grassyfield_0: 7651804429225439649
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
