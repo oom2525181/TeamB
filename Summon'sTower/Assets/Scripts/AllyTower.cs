@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class AllyTower : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float TowerHP = 500.0f;
+    public bool broken = false;
+    public void Damage(float damage)
     {
-        
+        TowerHP -= damage;
+        Debug.Log("味方のタワーが"+ damage + " ダメージを受けてHPが " + TowerHP + " になった！");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (TowerHP <= 0)
+        {
+            broken = true;
+            Destroy(gameObject);
+        }
     }
 }
