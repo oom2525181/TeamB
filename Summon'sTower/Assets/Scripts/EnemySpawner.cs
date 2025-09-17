@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -10,6 +11,9 @@ public class EnemySpawner : MonoBehaviour
     private float interval = 0.5f;
     public int Count;
     public bool isSTOPED = false;
+    public bool isEND = false;
+    public GameObject STOPPanel;
+    public GameObject ENDPanel;
 
     [SerializeField] GameObject Enemy1;
     [SerializeField] GameObject Enemy2;
@@ -29,10 +33,21 @@ public class EnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape) && isEND == false)
+        {
+            STOP();
+        }
+        if (isEND == true)
+        {
+            STOPPanel.SetActive(false);
+            ENDPanel.SetActive(true);
+        }
+
+
         timer += Time.deltaTime;
         if(timer >= interval)
         {
-            if (isSTOPED == false)
+            if (isSTOPED == false && isEND == false)
             {
                 EnemySpawn();
             }
@@ -86,6 +101,19 @@ public class EnemySpawner : MonoBehaviour
                 float y = Random.Range(0.4f, -1.0f);
                 Instantiate(Enemy5, new Vector3(5.7f, y, 0), transform.rotation);
             }
+        }
+    }
+    public void STOP()
+    {
+        if (isSTOPED == true)
+        {
+            isSTOPED = false;
+            STOPPanel.SetActive(false);
+        }
+        else
+        {
+            isSTOPED = true;
+            STOPPanel.SetActive(true);
         }
     }
 }

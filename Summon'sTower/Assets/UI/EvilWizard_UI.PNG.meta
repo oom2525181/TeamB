@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EvilWizard_UI_0: 2860878238800823481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

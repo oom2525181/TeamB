@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      HeroicKnight_UI_0: -3290658324473399715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
