@@ -7,6 +7,13 @@ public class ButtonData : MonoBehaviour
     [SerializeField] GameObject player;
     [SerializeField] int Count;
 
+    public EnemySpawner spawner;
+
+    void Start()
+    {
+        spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+    }
+
     public void OnClick()
     {
         PlayerSpawn();
@@ -15,10 +22,13 @@ public class ButtonData : MonoBehaviour
     {
         if (Count == 0)
             Count = 1;
-        for (int i = 0; i < Count; i++)
+        if (spawner.isSTOPED == false)
         {
-            float y = Random.Range(0.4f, -1.0f);
-            Instantiate(player, new Vector3(-5.4f, y, 0), transform.rotation);
+            for (int i = 0; i < Count; i++)
+            {
+                float y = Random.Range(0.4f, -1.0f);
+                Instantiate(player, new Vector3(-5.7f, y, 0), transform.rotation);
+            }
         }
     }
 }
