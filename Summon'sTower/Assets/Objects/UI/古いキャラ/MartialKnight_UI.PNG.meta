@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MartialKnight_UI_0: 8410785239459973250
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
