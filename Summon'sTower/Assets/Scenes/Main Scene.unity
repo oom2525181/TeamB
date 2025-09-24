@@ -537,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3855335589145868469, guid: 3134d0e4a3203a14ab0ccb642b0edaa4, type: 3}
   Count: 0
-  Cost: 20
+  Cost: 40
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!114 &205053566
@@ -858,6 +858,7 @@ EdgeCollider2D:
   - {x: 2.3626297, y: 1.9220774}
   - {x: 2.6446574, y: 1.9296786}
   - {x: 2.69252, y: 2.6557653}
+  - {x: 2.391983, y: 2.758079}
   - {x: 2.3919816, y: 2.758079}
   - {x: 3.9370914, y: 3.8384}
   - {x: 4.222714, y: 3.7016072}
@@ -3316,7 +3317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3855335589145868469, guid: 10eaf76b31100964cbbf6b2221e77bbc, type: 3}
   Count: 0
-  Cost: 20
+  Cost: 25
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!114 &1650261619
@@ -3604,7 +3605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3214252275018464279, guid: 0f10f5d0ccff1ce4faa8616540be6131, type: 3}
   Count: 0
-  Cost: 20
+  Cost: 10
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!114 &1772806602
@@ -3937,7 +3938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3855335589145868469, guid: 0a891f1f45b8fe04485f9267421b029a, type: 3}
   Count: 3
-  Cost: 20
+  Cost: 30
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!114 &2022915100

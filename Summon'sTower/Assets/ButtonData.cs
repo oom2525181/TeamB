@@ -33,8 +33,8 @@ public class ButtonData : MonoBehaviour
             gameDirector.money -= Cost;
             for (int i = 0; i < Count; i++)
             {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(player, new Vector3(-5.7f, y, 0), transform.rotation);
+                float y = Random.Range(-1f, -0.6f);
+                Instantiate(player, new Vector3(-6.2f, y, 0), transform.rotation);
             }
         }
     }

@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpeedKnight_UI_0: -2647727712593730487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
