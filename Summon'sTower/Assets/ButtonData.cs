@@ -6,12 +6,18 @@ public class ButtonData : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] int Count;
+    [SerializeField] int Cost;
 
     public EnemySpawner spawner;
+
+    GameObject director;
+    public GameDirector gameDirector;
 
     void Start()
     {
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        this.director = GameObject.Find("GameDirector");
+        gameDirector = director.GetComponent<GameDirector>();
     }
 
     public void OnClick()
@@ -22,8 +28,9 @@ public class ButtonData : MonoBehaviour
     {
         if (Count == 0)
             Count = 1;
-        if (spawner.isSTOPED == false)
+        if (spawner.isSTOPED == false && gameDirector.money >= Cost)
         {
+            gameDirector.money -= Cost;
             for (int i = 0; i < Count; i++)
             {
                 float y = Random.Range(0.4f, -1.0f);

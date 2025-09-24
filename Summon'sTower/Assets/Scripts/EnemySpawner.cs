@@ -8,7 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class EnemySpawner : MonoBehaviour
 {
     private float timer = 0f;
-    private float interval = 0.5f;
+    private float interval = 6.5f;
     public int Count;
     public bool isSTOPED = false;
     public bool isEND = false;

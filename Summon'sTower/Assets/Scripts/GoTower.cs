@@ -10,13 +10,17 @@ public class GoTower : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] float speed;
     [SerializeField] float hp;
+    [SerializeField] float damage;
+
+    public float damageInterval = 1f;
+    private float lastDamageTime = 0f;
 
     public EnemySpawner spawner;
     
     private void Start()
     {
         if (speed <= 0) //デフォルトのスピード
-            speed = 5;
+            speed = 1.5f;
         if (hp <= 0) //デフォルトの体力
             hp = 5;
         if (CompareTag("Ally"))
@@ -38,6 +42,7 @@ public class GoTower : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
+            /*
             if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
@@ -51,14 +56,43 @@ public class GoTower : MonoBehaviour
                Destroy(gameObject);
                Debug.Log("勝利");
                spawner.isEND = true;
-            }
+            }*/
     }
-
     public void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+        //Debug.Log("Stayよびだし");
+        if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
         {
-           
+            //Debug.Log("Allyによるよびだし");
+            Tower tower = other.gameObject.GetComponent<Tower>();
+            if (tower != null)
+            {
+                if (Time.time - lastDamageTime >= damageInterval)
+                {
+                    tower.TakeDamage(damage, 1);
+                    lastDamageTime = Time.time;
+                }
+            }
+            else
+            {
+                Debug.Log("nulL!!!!!!");
+            }
+        }
+        else if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
+        {
+            //Debug.Log("Enemyによるよびだし");
+            Tower tower = other.gameObject.GetComponent<Tower>();
+            if (tower != null)
+            {
+                if (Time.time - lastDamageTime >= damageInterval)
+                {
+                    tower.TakeDamage(damage, 2);
+                }
+            }
+            else
+            {
+                Debug.Log("nulL!!!!!!");
+            }
         }
     }
     void Update()

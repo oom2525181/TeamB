@@ -101,8 +101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 3
+  speed: 2
   hp: 8
+  damage: 40
   spawner: {fileID: 0}
 --- !u!58 &7341996721157793562
 CircleCollider2D:
