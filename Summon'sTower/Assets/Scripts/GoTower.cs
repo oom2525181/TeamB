@@ -87,6 +87,7 @@ public class GoTower : MonoBehaviour
                 if (Time.time - lastDamageTime >= damageInterval)
                 {
                     tower.TakeDamage(damage, 2);
+                    lastDamageTime = Time.time;
                 }
             }
             else

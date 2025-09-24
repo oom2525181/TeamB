@@ -103,7 +103,8 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 2
   hp: 8
-  damage: 40
+  damage: 50
+  damageInterval: 1
   spawner: {fileID: 0}
 --- !u!58 &7341996721157793562
 CircleCollider2D:
