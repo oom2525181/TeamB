@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 455540133117437583}
   - component: {fileID: 7169530610137959303}
   - component: {fileID: 4481084604887084296}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ally
   m_TagString: Ally
   m_Icon: {fileID: 0}
@@ -104,6 +104,12 @@ MonoBehaviour:
   speed: 0
   hp: 12
   damage: 10
+  detectDistance: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  direction: 1
+  damageInterval: 1
   spawner: {fileID: 0}
 --- !u!58 &7169530610137959303
 CircleCollider2D:

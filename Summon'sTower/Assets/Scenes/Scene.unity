@@ -4359,6 +4359,16 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1411599182}
+    - target: {fileID: 3742822078933618428, guid: 7d290a7ebb384ec47afaa270bc7a3434,
+        type: 3}
+      propertyPath: direction
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742822078933618428, guid: 7d290a7ebb384ec47afaa270bc7a3434,
+        type: 3}
+      propertyPath: enemyLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 9110708590597508679, guid: 7d290a7ebb384ec47afaa270bc7a3434,
         type: 3}
       propertyPath: m_Name

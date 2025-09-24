@@ -11,9 +11,13 @@ public class GoTower : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float hp;
     [SerializeField] float damage;
+    [SerializeField] private float detectDistance = 5f;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private int direction = 1;
 
     public float damageInterval = 1f;
     private float lastDamageTime = 0f;
+    private bool isHit = false;
 
     public EnemySpawner spawner;
     
@@ -22,14 +26,14 @@ public class GoTower : MonoBehaviour
         if (speed <= 0) //デフォルトのスピード
             speed = 1.5f;
         if (hp <= 0) //デフォルトの体力
-            hp = 5;
+            hp = 40;
         if (CompareTag("Ally"))
         target = GameObject.Find("Enemy'sTower").transform;
         else if (CompareTag("Enemy"))
             target = GameObject.Find("Ally'sTower").transform;
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
-    public void OnCollisionEnter2D(Collision2D other)
+   /* public void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log("ぶつかった");
             if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
@@ -42,7 +46,7 @@ public class GoTower : MonoBehaviour
                 Destroy(other.gameObject);
                 Destroy(gameObject);
             }
-            /*
+            
             if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
@@ -56,10 +60,45 @@ public class GoTower : MonoBehaviour
                Destroy(gameObject);
                Debug.Log("勝利");
                spawner.isEND = true;
-            }*/
-    }
+            }
+    }*/
+
     public void OnCollisionStay2D(Collision2D other)
     {
+       
+
+        GoTower gotower = other.gameObject.GetComponent<GoTower>();
+
+        if(gotower == null )
+        {
+            Debug.Log("Gotowerがnull");
+        }
+        if (gotower != null)
+        {
+            if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+            {
+                isHit = true;
+                Debug.Log("ぶつかってる");
+                if (Time.time - lastDamageTime >= damageInterval)
+                {
+                    Debug.Log("なぐった");
+                    gotower.TakeDamage(damage);
+                    lastDamageTime = Time.time;
+                }
+            }
+            else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
+            {
+                isHit = true;
+                //Debug.Log("ぶつかってる");
+                if (Time.time - lastDamageTime >= damageInterval)
+                {
+                    Debug.Log("なぐった");
+                    gotower.TakeDamage(damage);
+                    lastDamageTime = Time.time;
+                }
+            }
+        }
+
         //Debug.Log("Stayよびだし");
         if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
         {
@@ -96,12 +135,43 @@ public class GoTower : MonoBehaviour
             }
         }
     }
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        isHit = false;
+    }
     void Update()
     {
+
+        Vector2 dirVector = Vector2.right * direction;
+        
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVector,detectDistance,enemyLayer);
+        if(hit.collider != null)
+        {
+           // Debug.Log("たーげっと");
+            target = hit.transform;  
+        }
+        else
+        {
+            if (CompareTag("Ally"))
+                target = GameObject.Find("Enemy'sTower").transform;
+            else if (CompareTag("Enemy"))
+                target = GameObject.Find("Ally'sTower").transform;
+        }
+
         if (spawner.isSTOPED == false && spawner.isEND == false)
         {
+            if (isHit == false)
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
-
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+        Debug.Log("ていくだめーじ");
+       // hp = Mathf.Clamp(hp, 0, maxhp);
+       if(hp < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

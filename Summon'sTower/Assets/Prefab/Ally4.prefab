@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5982386994587978266}
   - component: {fileID: 7341996721157793562}
   - component: {fileID: 730994376451475512}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ally4
   m_TagString: Ally
   m_Icon: {fileID: 0}
@@ -104,6 +104,11 @@ MonoBehaviour:
   speed: 2
   hp: 8
   damage: 50
+  detectDistance: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  direction: 1
   damageInterval: 1
   spawner: {fileID: 0}
 --- !u!58 &7341996721157793562

@@ -22,7 +22,7 @@ public class GameDirector : MonoBehaviour
     }
     void GetMoney()
     {
-        Debug.Log("ÖËŞÀŞ»ÚÀÖ");
+       // Debug.Log("ÖËŞÀŞ»ÚÀÖ");
         money++;
         //money += 10;
     }
