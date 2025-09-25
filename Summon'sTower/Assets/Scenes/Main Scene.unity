@@ -4298,6 +4298,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 455540133117437583, guid: 0f10f5d0ccff1ce4faa8616540be6131,
         type: 3}
+      propertyPath: hp
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 455540133117437583, guid: 0f10f5d0ccff1ce4faa8616540be6131,
+        type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
@@ -4306,6 +4311,11 @@ PrefabInstance:
       propertyPath: spawner
       value: 
       objectReference: {fileID: 1411599182}
+    - target: {fileID: 455540133117437583, guid: 0f10f5d0ccff1ce4faa8616540be6131,
+        type: 3}
+      propertyPath: damageInterval
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3214252275018464279, guid: 0f10f5d0ccff1ce4faa8616540be6131,
         type: 3}
       propertyPath: m_Name

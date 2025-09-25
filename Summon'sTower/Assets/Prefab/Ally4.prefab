@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 2
-  hp: 8
+  maxhp: 15
   damage: 50
   detectDistance: 5
   enemyLayer:

@@ -7,27 +7,30 @@ using UnityEngine;
 public class GoTower : MonoBehaviour
 {
     //private float speed = 5.0f;
-    [SerializeField] Transform target;
-    [SerializeField] float speed;
-    [SerializeField] float hp;
-    [SerializeField] float damage;
-    [SerializeField] private float detectDistance = 5f;
-    [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private int direction = 1;
-
-    public float damageInterval = 1f;
-    private float lastDamageTime = 0f;
-    private bool isHit = false;
-
+    [SerializeField] Transform target;  //移動する場所、目的地
+    [SerializeField] float speed;       //移動速度
+    [SerializeField] float maxhp;          //最大体力
+    private float hp;
+    [SerializeField] float damage;      //与えるダメージ
+    [SerializeField] private float detectDistance = 5f; //感知する距離
+    [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
+    [SerializeField] private int direction = 1;         //敵を感知する方向用
+    public float damageInterval = 1f;  //ダメージを与える間隔
+    private float lastDamageTime = 0f; //最後にダメージを与えた時間
+    private bool isHit = false;        //ぶつかっているかどうか
+    
     public EnemySpawner spawner;
     
     private void Start()
     {
         if (speed <= 0) //デフォルトのスピード
             speed = 1.5f;
-        if (hp <= 0) //デフォルトの体力
-            hp = 40;
-        if (CompareTag("Ally"))
+        if (maxhp <= 0) //デフォルトの体力
+            maxhp = 40;
+       
+        hp = maxhp;
+        //targetの設定
+        if (CompareTag("Ally")) 
         target = GameObject.Find("Enemy'sTower").transform;
         else if (CompareTag("Enemy"))
             target = GameObject.Find("Ally'sTower").transform;
@@ -69,16 +72,18 @@ public class GoTower : MonoBehaviour
 
         GoTower gotower = other.gameObject.GetComponent<GoTower>();
 
-        if(gotower == null )
-        {
-            Debug.Log("Gotowerがnull");
-        }
+        //if(gotower == null )
+        //{
+        //   Debug.Log("Gotowerがnull");
+        //}
+
+        //衝突したら攻撃
         if (gotower != null)
         {
             if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
             {
                 isHit = true;
-                Debug.Log("ぶつかってる");
+                //Debug.Log("ぶつかってる");
                 if (Time.time - lastDamageTime >= damageInterval)
                 {
                     Debug.Log("なぐった");
@@ -99,7 +104,7 @@ public class GoTower : MonoBehaviour
             }
         }
 
-        //Debug.Log("Stayよびだし");
+        //味方が敵の塔に攻撃
         if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
         {
             //Debug.Log("Allyによるよびだし");
@@ -117,6 +122,7 @@ public class GoTower : MonoBehaviour
                 Debug.Log("nulL!!!!!!");
             }
         }
+        //敵が味方の塔に攻撃
         else if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
         {
             //Debug.Log("Enemyによるよびだし");
@@ -148,7 +154,7 @@ public class GoTower : MonoBehaviour
 
         Vector2 dirVector = Vector2.right * direction;
         
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVector,detectDistance,enemyLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVector,detectDistance,enemyLayer); //正面にいるエンティティの取得
         if(hit.collider != null)
         {
            // Debug.Log("たーげっと");
@@ -168,12 +174,13 @@ public class GoTower : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
+    //被ダメージ用
     public void TakeDamage(float damage)
     {
         hp -= damage;
         Debug.Log("ていくだめーじ");
        // hp = Mathf.Clamp(hp, 0, maxhp);
-       if(hp < 0)
+       if(hp <= 0)
         {
             Destroy(gameObject);
         }
