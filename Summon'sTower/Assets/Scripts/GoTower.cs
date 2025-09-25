@@ -141,6 +141,10 @@ public class GoTower : MonoBehaviour
     }
     void Update()
     {
+        if (isHit && target == null)
+        {
+            isHit = false;
+        }
 
         Vector2 dirVector = Vector2.right * direction;
         
