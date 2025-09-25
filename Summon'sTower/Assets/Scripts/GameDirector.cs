@@ -8,10 +8,13 @@ public class GameDirector : MonoBehaviour
 {
     TextMeshProUGUI moneytext;
     public int money;
+    public EnemySpawner spawner;
+
     void Start()
     {
         this.moneytext = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
         InvokeRepeating("GetMoney", 0.1f, 0.1f);
+        spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,7 @@ public class GameDirector : MonoBehaviour
     void GetMoney()
     {
        // Debug.Log("÷Àﬁ¿ﬁª⁄¿÷");
+       if(spawner.isSTOPED == false)
         money++;
         //money += 10;
     }

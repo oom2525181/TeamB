@@ -38,7 +38,7 @@ public class Tower : MonoBehaviour
             hpGaugeImage.fillAmount = HP / MaxHP;
         }
 
-        Debug.Log("TowerHP =" + HP);
+        //Debug.Log("TowerHP =" + HP);
         if(HP <= 0)
         {
             SceneManager.LoadScene("EndScene");
@@ -50,7 +50,6 @@ public class Tower : MonoBehaviour
     public void ChangeHP()
     {
         float fillAmount = HP / MaxHP;
-
     }
 }
 

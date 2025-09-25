@@ -78,7 +78,7 @@ public class GoTower : MonoBehaviour
         //}
 
         //è’ìÀÇµÇΩÇÁçUåÇ
-        if (gotower != null)
+        if (gotower != null && (spawner.isSTOPED == false && spawner.isEND == false))
         {
             if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
             {
