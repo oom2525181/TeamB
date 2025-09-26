@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5005107124558688175}
   - component: {fileID: 5001230720711187065}
   - component: {fileID: 3129151364115996099}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: attackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ Transform:
   m_Children:
   - {fileID: 5005107124558688175}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9200626102483851659
 SpriteRenderer:

@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 5339219389839019142}
   - component: {fileID: 5429993910839154724}
   - component: {fileID: 4976341536000009388}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: attackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,7 +241,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 3.334291, y: -0.02339369}
+  m_Offset: {x: 3.4084616, y: 0.013696782}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -251,7 +251,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.3157606, y: 0.21779364}
+  m_Size: {x: 0.4641018, y: 0.49332285}
   m_EdgeRadius: 0
 --- !u!114 &4976341536000009388
 MonoBehaviour:
