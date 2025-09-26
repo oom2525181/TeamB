@@ -34,7 +34,7 @@ public class ButtonData : MonoBehaviour
             for (int i = 0; i < Count; i++)
             {
                 float y = Random.Range(0.4f, -1.0f);
-                Instantiate(player, new Vector3(-5.7f, y, 0), transform.rotation);
+                Instantiate(player, new Vector3(-6.98f, y, 0), transform.rotation);
             }
         }
     }

@@ -7,40 +7,51 @@ using UnityEngine.UI;
 public class Tower : MonoBehaviour
 {
     public float MaxHP = 500.0f;
-    float HP;
+    public float hp;
     public EnemySpawner spawner;
     GameObject HpGauge;
 
     [SerializeField] private Image hpGaugeImage;
 
+    private ParticleManager particleManager; //パーティクル用
+
     private void Start()
     {
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         this.HpGauge = GameObject.Find("EnemyHpGauge");
-        HP = MaxHP;
+        hp = MaxHP;
         if(hpGaugeImage != null )
         {
             hpGaugeImage.fillAmount = 1f;
         }
-    }
-    public void TakeDamage(float damage,int type)
-    {
-        HP -= damage;
-        if(type== 1)
-            Debug.Log("敵のタワーに" + damage + " ダメージを与えてHPが " + HP + " になった！");
-        else
-            Debug.Log("味方のタワーが" + damage + " ダメージを受けてHPが " + HP + " になった！");
 
-        HP = Mathf.Clamp(HP, 0, MaxHP);
+        particleManager = FindFirstObjectByType<ParticleManager>();
+    }
+    public void TakeDamage(float dmg)
+    {
+        hp -= dmg;
+        Debug.Log($"{name} が {dmg} ダメージを受けた！ 残りHP: {hp}");
+
+        if (particleManager != null)
+            particleManager.PlayEffect(transform.position);
+
+        //if(type== 1)
+        //    Debug.Log("敵のタワーに" + dmg + " ダメージを与えてHPが " + hp + " になった！");
+        //else
+        //    Debug.Log("味方のタワーが" + dmg + " ダメージを受けてHPが " + hp + " になった！");
+
+        hp = Mathf.Clamp(hp, 0, MaxHP);
 
         if (hpGaugeImage != null) 
         {
-            hpGaugeImage.fillAmount = HP / MaxHP;
+            hpGaugeImage.fillAmount = hp / MaxHP;
         }
 
         //Debug.Log("TowerHP =" + HP);
-        if(HP <= 0)
+        if(hp <= 0)
         {
+            Debug.Log($"{name} が破壊された！");
+            Destroy(gameObject);
             SceneManager.LoadScene("EndScene");
             //Destroy(gameObject);
             //spawner.isEND = true;
@@ -49,7 +60,7 @@ public class Tower : MonoBehaviour
     }
     public void ChangeHP()
     {
-        float fillAmount = HP / MaxHP;
+        float fillAmount = hp / MaxHP;
     }
 }
 
