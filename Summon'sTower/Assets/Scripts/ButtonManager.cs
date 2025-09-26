@@ -22,6 +22,17 @@ public class ButtonManager: MonoBehaviour
             gameDirector = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SetCharacter(assignedCharacter);
+        }
+
+    }
+
+
     public void SetCharacter(CharacterData character)
     {
         assignedCharacter = character;

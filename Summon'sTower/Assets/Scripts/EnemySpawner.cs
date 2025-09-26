@@ -43,7 +43,6 @@ public class EnemySpawner : MonoBehaviour
             ENDPanel.SetActive(true);
         }
 
-
         timer += Time.deltaTime;
         if(timer >= interval)
         {
