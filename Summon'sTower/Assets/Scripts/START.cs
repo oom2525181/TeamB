@@ -19,6 +19,6 @@ public class START : MonoBehaviour
 
     public void run_game()
     {
-        SceneManager.LoadScene("Scene");
+        SceneManager.LoadScene("Main Scene");
     }
 }

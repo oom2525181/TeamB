@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 205053567}
-  assignedCharacter: {fileID: 11400000, guid: 1706feb27e4ad904ea7f9605d7a1def9, type: 2}
+  assignedCharacter: {fileID: 0}
 --- !u!1 &267181564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,7 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 746795928}
-  assignedCharacter: {fileID: 11400000, guid: 58ba97e9a56b7b242b7072a6e70bcda1, type: 2}
+  assignedCharacter: {fileID: 0}
 --- !u!1 &750132674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2968,12 +2968,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b1b16023e4b0f4cb3cabb3991200cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partyButtons:
-  - {fileID: 1772806605}
-  - {fileID: 746795930}
-  - {fileID: 205053569}
-  - {fileID: 1650261622}
-  - {fileID: 2022915103}
   selectedParty: []
 --- !u!4 &1089095973
 Transform:
@@ -4344,7 +4338,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 1650261620}
-  assignedCharacter: {fileID: 11400000, guid: 48299f63b2750484aaa1b918dbddd9ba, type: 2}
+  assignedCharacter: {fileID: 0}
+--- !u!1 &1675021797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1675021799}
+  - component: {fileID: 1675021798}
+  m_Layer: 0
+  m_Name: BattleUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1675021798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675021797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecfcd44f01c7ff4baa2e4105908231f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  battleButtons:
+  - {fileID: 1772806605}
+  - {fileID: 746795930}
+  - {fileID: 205053569}
+  - {fileID: 1650261622}
+  - {fileID: 2022915103}
+--- !u!4 &1675021799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675021797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 616.6242, y: 364.2391, z: -6.9496803}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768255623
 GameObject:
   m_ObjectHideFlags: 0
@@ -4647,7 +4691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 1772806603}
-  assignedCharacter: {fileID: 11400000, guid: 0076cc3f0e250144f829677565f7e3e7, type: 2}
+  assignedCharacter: {fileID: 0}
 --- !u!1 &1922847378
 GameObject:
   m_ObjectHideFlags: 0
@@ -4995,7 +5039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 2022915101}
-  assignedCharacter: {fileID: 11400000, guid: aea403a4e120e524baac85db3dda1002, type: 2}
+  assignedCharacter: {fileID: 0}
 --- !u!1 &2040262777
 GameObject:
   m_ObjectHideFlags: 0
