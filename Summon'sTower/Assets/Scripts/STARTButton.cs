@@ -1,20 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartButton: MonoBehaviour
+public class StartButton : MonoBehaviour
 {
     public void OnStartButtonPressed()
     {
-        var party = PartyManager.Instance.selectedParty;
+        var party = PartyManager.Instance.selectedParty; // PartyManagerから取得
+
+        // 1人でもセットされていればOK
+        bool hasCharacter = false;
         foreach (var c in party)
         {
-            if (c == null)
+            if (c != null)
             {
-                Debug.Log("パーティが揃っていません！");
-                return; // 空の枠があったらマッチ不可
+                hasCharacter = true;
+                break;
             }
         }
 
-        SceneManager.LoadScene("Main Scene");
+        if (hasCharacter)
+        {
+            SceneManager.LoadScene("Main Scene");
+        }
+        else
+        {
+            Debug.Log("最低1人キャラをセットしてください！");
+        }
     }
 }
