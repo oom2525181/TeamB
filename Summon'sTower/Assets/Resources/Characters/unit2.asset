@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: magic caster
   icon: {fileID: 2860878238800823481, guid: b02439b5bd83d714882e065aab095790, type: 3}
-  cost: 15
+  cost: 35
   count: 0
+  cooldownTime: 5
   prefab: {fileID: 3855335589145868469, guid: 4a7df42ab4f49fe4697af231ba37d3e2, type: 3}
   isOwned: 0
   DefaultCharacter: 0

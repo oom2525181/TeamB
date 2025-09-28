@@ -4,10 +4,11 @@ using UnityEngine;
 public class CharacterData : ScriptableObject
 {
     public string characterName;
-    public Sprite icon;         // アイコン
-    public int cost;            // コスト
-    public int count;           //出現数
-    public GameObject prefab;   // キャラのPrefab
+    public Sprite icon;              // アイコン
+    public int cost;                 // コスト
+    public int count;                //出現数
+    public float cooldownTime = 1f;  //キャラ召喚のクールタイム
+    public GameObject prefab;        // キャラのPrefab
 
 
     [Header("Ownership")]                     //Inspecterで見やすくするやつ

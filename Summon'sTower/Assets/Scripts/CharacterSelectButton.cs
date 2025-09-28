@@ -13,6 +13,8 @@ public class CharacterSelectButton: MonoBehaviour
     private Button button;
     private PartyManager partyManager;
 
+    
+
     void Awake()
     {
         // Buttonコンポーネント
@@ -36,6 +38,8 @@ public class CharacterSelectButton: MonoBehaviour
         }
         UpdateOwnershipState();
     }
+
+   
 
     void UpdateOwnershipState()
     {
