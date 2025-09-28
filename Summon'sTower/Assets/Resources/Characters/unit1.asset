@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f0e4560e3ee87a43ab109c0cc670aa5, type: 3}
-  m_Name: unit3
+  m_Name: unit1
   m_EditorClassIdentifier: 
-  characterName: knight2
-  icon: {fileID: -3290658324473399715, guid: 0021672f7fc8d4f4ba54d71389b61156, type: 3}
-  cost: 20
-  prefab: {fileID: 3855335589145868469, guid: 3134d0e4a3203a14ab0ccb642b0edaa4, type: 3}
+  characterName: knight1
+  icon: {fileID: 1803408233877473036, guid: 2256b36290f13ca4cbb472b6be246150, type: 3}
+  cost: 5
+  count: 0
+  prefab: {fileID: 3214252275018464279, guid: 0f10f5d0ccff1ce4faa8616540be6131, type: 3}
+  isOwned: 0
+  DefaultCharacter: 1

@@ -6,8 +6,12 @@ using UnityEngine.SceneManagement;
 public class PartyManager : MonoBehaviour
 {
     public static PartyManager Instance;
+
     public CharacterData[] selectedParty = new CharacterData[5];
-    PartySlot[] slots;
+    private PartySlot[] slots;
+
+    private CharacterData[] allCharacters;
+    public CharacterData[] AllCharacters => allCharacters; // 他から参照用
 
     void Awake()
     {
@@ -16,17 +20,46 @@ public class PartyManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            // Resources/Characters フォルダから全部ロード
+            allCharacters = Resources.LoadAll<CharacterData>("Characters");
+
+            // 所持初期化
+            foreach (var c in allCharacters)
+            {
+                c.isOwned = c.DefaultCharacter;
+            }
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        slots = GameObject.Find("PartySlots")?.GetComponentsInChildren<PartySlot>();
-        if (slots != null)
-            for (int i = 0; i < slots.Length; i++)
-                slots[i].SetCharacter(selectedParty[i]);
+        // シーンに PartySlots があれば取得
+        GameObject slotsParent = GameObject.Find("PartySlots");
+        if (slotsParent != null)
+        {
+            slots = slotsParent.GetComponentsInChildren<PartySlot>();
+            RefreshSlotsUI();
+        }
     }
+
+    // UI に反映
+    public void RefreshSlotsUI()
+    {
+        if (slots == null) return;
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < selectedParty.Length)
+                slots[i].SetCharacter(selectedParty[i]);
+            else
+                slots[i].SetCharacter(null);
+        }
+    }
+
 
     public void AssignCharacterToFirstEmptySlot(CharacterData c)
     {

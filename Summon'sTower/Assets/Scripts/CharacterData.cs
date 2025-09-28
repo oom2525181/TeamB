@@ -8,4 +8,9 @@ public class CharacterData : ScriptableObject
     public int cost;            // コスト
     public int count;           //出現数
     public GameObject prefab;   // キャラのPrefab
+
+
+    [Header("Ownership")]                     //Inspecterで見やすくするやつ
+    public bool isOwned;                      //キャラを持ってるかどうか
+    public bool DefaultCharacter = false;     //デフォルトキャラかどうか
 }

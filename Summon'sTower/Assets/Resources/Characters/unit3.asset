@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f0e4560e3ee87a43ab109c0cc670aa5, type: 3}
-  m_Name: unit2
+  m_Name: unit3
   m_EditorClassIdentifier: 
-  characterName: magic caster
-  icon: {fileID: 2860878238800823481, guid: b02439b5bd83d714882e065aab095790, type: 3}
-  cost: 15
-  prefab: {fileID: 3855335589145868469, guid: 4a7df42ab4f49fe4697af231ba37d3e2, type: 3}
+  characterName: knight2
+  icon: {fileID: -3290658324473399715, guid: 0021672f7fc8d4f4ba54d71389b61156, type: 3}
+  cost: 20
+  count: 0
+  prefab: {fileID: 3855335589145868469, guid: 3134d0e4a3203a14ab0ccb642b0edaa4, type: 3}
+  isOwned: 0
+  DefaultCharacter: 0
