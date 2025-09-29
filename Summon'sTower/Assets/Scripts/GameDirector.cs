@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameDirector : MonoBehaviour
 {
     TextMeshProUGUI moneytext;
+
     public int money;
     public EnemySpawner spawner;
 
