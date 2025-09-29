@@ -899,7 +899,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1706feb27e4ad904ea7f9605d7a1def9, type: 2}
   - {fileID: 11400000, guid: 48299f63b2750484aaa1b918dbddd9ba, type: 2}
   - {fileID: 11400000, guid: aea403a4e120e524baac85db3dda1002, type: 2}
-  - {fileID: 11400000, guid: f1785bfae8bce994ea3096b6e8384af6, type: 2}
   resultIcon: {fileID: 932112011}
   resultName: {fileID: 61513774}
 --- !u!1 &1389006576

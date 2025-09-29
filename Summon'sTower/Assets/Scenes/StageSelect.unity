@@ -554,7 +554,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 836463179}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
-        m_MethodName: Stage1
+        m_MethodName: Stage2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2503,7 +2503,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 836463179}
         m_TargetAssemblyTypeName: StageSelect, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: Stage3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
