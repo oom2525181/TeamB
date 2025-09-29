@@ -27,6 +27,7 @@ public class CharacterSelectButton: MonoBehaviour
 
     void Start()
     {
+       
 
         partyManager = FindFirstObjectByType<PartyManager>();
         icon.sprite = character.icon; // Œ©‚½–Ú”½‰f

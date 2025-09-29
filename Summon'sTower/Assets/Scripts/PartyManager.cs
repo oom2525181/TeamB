@@ -10,16 +10,26 @@ public class PartyManager : MonoBehaviour
     public CharacterData[] selectedParty = new CharacterData[5];
     private PartySlot[] slots;
 
-    private CharacterData[] allCharacters;
+    public CharacterData[] allCharacters;
     public CharacterData[] AllCharacters => allCharacters; // 他から参照用
 
     void Awake()
     {
+        //foreach (var c in allCharacters)
+        //{
+        //    c.isOwned = false; // メモリ上をリセット
+        //    PlayerPrefs.DeleteKey(c.characterName + "_Owned"); // 保存も消す
+        //}
+
+        PlayerPrefs.DeleteAll();
+
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            
 
             // Resources/Characters フォルダから全部ロード
             allCharacters = Resources.LoadAll<CharacterData>("Characters");
@@ -28,11 +38,22 @@ public class PartyManager : MonoBehaviour
             foreach (var c in allCharacters)
             {
                 c.isOwned = c.DefaultCharacter;
+                if (c.isOwned) // 所持している場合だけ保存
+                {
+                    PlayerData.SaveCharacterOwned(c.characterName);
+                }
             }
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+    void Start()
+    {
+        foreach (var c in allCharacters)
+        {
+            c.isOwned = PlayerData.IsCharacterOwned(c.characterName);
         }
     }
 

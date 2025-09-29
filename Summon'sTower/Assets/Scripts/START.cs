@@ -25,6 +25,11 @@ public class START : MonoBehaviour
     {
         SceneManager.LoadScene("CharacterSelect");
     }
+    public void gacha()
+    {
+        SceneManager.LoadScene("Gacha");
+    }
+
     public void Start_Battle()
     {
         var party = PartyManager.Instance.selectedParty;
