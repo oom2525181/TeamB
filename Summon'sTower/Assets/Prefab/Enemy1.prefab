@@ -197,7 +197,7 @@ MonoBehaviour:
   speed: 0
   maxhp: 0
   hp: 0
-  damage: 10
+  damage: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

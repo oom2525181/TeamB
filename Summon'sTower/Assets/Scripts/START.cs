@@ -41,7 +41,7 @@ public class START : MonoBehaviour
 
         if (hasCharacter)
         {
-            SceneManager.LoadScene("Main Scene");
+            SceneManager.LoadScene("StageSelect");
         }
         else
         {
