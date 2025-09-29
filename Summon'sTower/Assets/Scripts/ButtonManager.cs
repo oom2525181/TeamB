@@ -89,7 +89,7 @@ public class ButtonManager: MonoBehaviour
                 for (int i = 0; i < assignedCharacter.count; i++)
                 {
                     float y = Random.Range(-1f, 0.4f);
-                    Instantiate(assignedCharacter.prefab, new Vector3(-5.7f, y, 0), transform.rotation);
+                    Instantiate(assignedCharacter.prefab, new Vector3(-7.2f, y, 0), transform.rotation);
                 }
 
                 gameDirector.money -= assignedCharacter.cost;

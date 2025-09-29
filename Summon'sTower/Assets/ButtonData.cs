@@ -28,7 +28,7 @@ public class ButtonData : MonoBehaviour
     {
         if (Count == 0)
             Count = 1;
-        if (spawner.isSTOPED == false && gameDirector.money >= Cost)
+        if (gameDirector.isSTOPED == false && gameDirector.money >= Cost)
         {
             gameDirector.money -= Cost;
             for (int i = 0; i < Count; i++)

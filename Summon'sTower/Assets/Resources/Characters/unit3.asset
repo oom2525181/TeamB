@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: knight2
   icon: {fileID: -3290658324473399715, guid: 0021672f7fc8d4f4ba54d71389b61156, type: 3}
-  cost: 40
-  count: 0
+  cost: 20
+  count: 1
   cooldownTime: 1
   prefab: {fileID: 3855335589145868469, guid: 3134d0e4a3203a14ab0ccb642b0edaa4, type: 3}
   isOwned: 0

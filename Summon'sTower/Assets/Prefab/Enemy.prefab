@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4958767926827059346}
   - component: {fileID: 3786739270397010759}
   - component: {fileID: 7006786951139261238}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: attackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ Transform:
   m_Children:
   - {fileID: 4958767926827059346}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9200626102483851659
 SpriteRenderer:
@@ -202,7 +202,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damageInterval: 1
+  Type_Metal: 0
   spawner: {fileID: 0}
+  gameDirector: {fileID: 0}
 --- !u!58 &505301997726621042
 CircleCollider2D:
   m_ObjectHideFlags: 0

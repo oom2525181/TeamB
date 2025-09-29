@@ -14,7 +14,7 @@ public class AttackRange : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"{parent.name} ‚ª {other.name} ‚ÆÕ“Ë");
+        //Debug.Log($"{parent.name} ‚ª {other.name} ‚ÆÕ“Ë");
 
         // ©•ª‚©‚çŒ©‚Ä“Gƒ†ƒjƒbƒg or “G‚Ì“ƒ‚È‚ç’Ç‰Á
         if (parent.IsEnemy(other.gameObject) ||
@@ -24,7 +24,7 @@ public class AttackRange : MonoBehaviour
             if (!enemiesInRange.Contains(other.gameObject))
             {
                 enemiesInRange.Add(other.gameObject);
-                Debug.Log($"{parent.name} ‚ª {other.name} ‚ğUŒ‚”ÍˆÍ‚É’Ç‰Á");
+                //Debug.Log($"{parent.name} ‚ª {other.name} ‚ğUŒ‚”ÍˆÍ‚É’Ç‰Á");
             }
         }
     }

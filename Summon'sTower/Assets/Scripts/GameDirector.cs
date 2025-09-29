@@ -9,7 +9,13 @@ public class GameDirector : MonoBehaviour
     TextMeshProUGUI moneytext;
 
     public int money;
+    public int moneymax = 100;
     public EnemySpawner spawner;
+
+    public bool isSTOPED = false;
+    public bool isEND = false;
+    public GameObject STOPPanel;
+    public GameObject ENDPanel;
 
     void Start()
     {
@@ -21,15 +27,40 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneytext.text = $"{money:F0}";
+        moneytext.text = $"{money:F0} / {moneymax:F0}";
         //money++;
+
+        if (Input.GetKeyDown(KeyCode.Escape) && isEND == false)
+        {
+            STOP();
+        }
+        if (isEND == true)
+        {
+            STOPPanel.SetActive(false);
+            ENDPanel.SetActive(true);
+        }
+
     }
     void GetMoney()
     {
        // Debug.Log("÷Àﬁ¿ﬁª⁄¿÷");
-       if(spawner.isSTOPED == false)
+       if(isSTOPED == false && money < moneymax)
         money++;
         //money += 10;
     }
-   
+
+    public void STOP()
+    {
+        if (isSTOPED == true)
+        {
+            isSTOPED = false;
+            STOPPanel.SetActive(false);
+        }
+        else
+        {
+            isSTOPED = true;
+            STOPPanel.SetActive(true);
+        }
+    }
+
 }

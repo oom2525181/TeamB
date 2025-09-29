@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Character", menuName = "Game/Character")]
-public class CharacterData : ScriptableObject
+public class CharacterData: ScriptableObject
 {
     public string characterName;
     public Sprite icon;              // ÉAÉCÉRÉì

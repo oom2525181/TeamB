@@ -105,11 +105,12 @@ MonoBehaviour:
   speed: 0.5
   maxhp: 50
   hp: 0
-  damage: 50
+  damage: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   damageInterval: 0.8
+  Type_Metal: 1
   spawner: {fileID: 0}
 --- !u!58 &6909761308943128108
 CircleCollider2D:

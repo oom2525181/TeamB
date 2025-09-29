@@ -17,9 +17,12 @@ public class GoTower : MonoBehaviour
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
+    public bool Type_Metal = false;
     //private bool isHit = false;        //ぶつかっているかどうか
 
     public EnemySpawner spawner;
+    GameObject director;
+    public GameDirector gameDirector;
     private AttackRange attackRange;
     //GameObject closestEnemy = null;
     //float closestDist = float.MaxValue;
@@ -40,6 +43,8 @@ public class GoTower : MonoBehaviour
         else if (CompareTag("Enemy"))
             target = GameObject.Find("Ally'sTower").transform;
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
+        this.director = GameObject.Find("GameDirector");
+        gameDirector = director.GetComponent<GameDirector>();
         attackRange = GetComponentInChildren<AttackRange>();  //子オブジェクトの参照
 
         particleManager = FindFirstObjectByType<ParticleManager>();
@@ -201,7 +206,7 @@ public class GoTower : MonoBehaviour
         }
 
         // 敵がいなければ移動
-        if (!hasEnemyInRange && target != null && !spawner.isSTOPED && !spawner.isEND)
+        if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
             Vector3 dir = target.position - transform.position;
             Vector3 scale = transform.localScale;
@@ -211,8 +216,11 @@ public class GoTower : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
 
-        // 攻撃処理
-        AttackClosestEnemy();
+        if (!gameDirector.isSTOPED && !gameDirector.isEND)
+        {
+            // 攻撃処理
+            AttackClosestEnemy();
+        }
     }
 
     // 最も近い敵か城を返す
@@ -281,8 +289,17 @@ public class GoTower : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         
-        Debug.Log($"{name} が {dmg} ダメージを受けた！");
-        hp -= dmg;
+       
+        if (!Type_Metal)
+        {
+            Debug.Log($"{name} が {dmg} ダメージを受けた！");
+            hp -= dmg;
+        }
+        else
+        {
+            Debug.Log($"{name} が {1} ダメージを受けた！");
+            hp -= 1;
+        }
         //Debug.Log("ていくだめーじ");
         // hp = Mathf.Clamp(hp, 0, maxhp);
 
@@ -297,7 +314,7 @@ public class GoTower : MonoBehaviour
     public bool IsEnemy(GameObject obj)
     {
         if (CompareTag("Ally") && obj.CompareTag("Enemy")) return true;
-        if ((CompareTag("Enemy") && obj.CompareTag("Ally")) || (CompareTag("Enemy") && obj.CompareTag("Ally'sTower"))) return true;
+        if (CompareTag("Enemy") && obj.CompareTag("Ally")) return true;
         return false;
     }
 }
