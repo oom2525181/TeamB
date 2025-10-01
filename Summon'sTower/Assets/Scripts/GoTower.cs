@@ -24,6 +24,8 @@ public class GoTower : MonoBehaviour
     public EnemySpawner spawner;
     GameObject director;
     public GameDirector gameDirector;
+    public AudioClip sound1;
+    AudioSource audioSource;
     private AttackRange attackRange;
     //GameObject closestEnemy = null;
     //float closestDist = float.MaxValue;
@@ -49,6 +51,7 @@ public class GoTower : MonoBehaviour
         attackRange = GetComponentInChildren<AttackRange>();  //子オブジェクトの参照
 
         particleManager = FindFirstObjectByType<ParticleManager>();
+        audioSource = GetComponent<AudioSource>();
     }
    /* public void OnCollisionEnter2D(Collision2D other)
     {
@@ -224,6 +227,7 @@ public class GoTower : MonoBehaviour
         {
             // 攻撃処理
             AttackClosestEnemy();
+            
         }
     }
 
@@ -288,6 +292,7 @@ public class GoTower : MonoBehaviour
             }
             else if (enemyTower != null)
             {
+            
                 enemyTower.TakeDamage(damage);
                 if (OneAttack)
                     Destroy(gameObject);
@@ -295,6 +300,7 @@ public class GoTower : MonoBehaviour
 
             lastDamageTime = Time.time;
             Debug.Log($"{name} が {closestEnemy.name} を攻撃した！");
+            audioSource.PlayOneShot(sound1);
         }
     }
     //被ダメージ用
@@ -316,7 +322,11 @@ public class GoTower : MonoBehaviour
         // hp = Mathf.Clamp(hp, 0, maxhp);
 
         if (particleManager != null)
+        {
             particleManager.PlayEffect(transform.position);
+            
+        }
+            
 
         if (hp <= 0)
         {
