@@ -13,6 +13,8 @@ public class Tower : MonoBehaviour
 
     [SerializeField] private Image hpGaugeImage;
 
+    [SerializeField] private GameObject panel;
+
     private ParticleManager particleManager; //パーティクル用
 
     private void Start()
@@ -23,6 +25,11 @@ public class Tower : MonoBehaviour
         if(hpGaugeImage != null )
         {
             hpGaugeImage.fillAmount = 1f;
+        }
+
+        if (panel != null)
+        {
+            panel.SetActive(false); // 非表示
         }
 
         particleManager = FindFirstObjectByType<ParticleManager>();
@@ -51,8 +58,12 @@ public class Tower : MonoBehaviour
         if(hp <= 0)
         {
             Debug.Log($"{name} が破壊された！");
+            if (panel != null)
+            {
+                panel.SetActive(true); // パネル表示
+            }
             Destroy(gameObject);
-            SceneManager.LoadScene("EndScene");
+            //SceneManager.LoadScene("EndScene");
             //Destroy(gameObject);
             //spawner.isEND = true;
            

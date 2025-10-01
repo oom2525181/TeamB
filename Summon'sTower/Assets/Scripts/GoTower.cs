@@ -10,7 +10,7 @@ public class GoTower : MonoBehaviour
     [SerializeField] Transform target;  //移動する場所、目的地
     [SerializeField] float speed;       //移動速度
     [SerializeField] float maxhp;          //最大体力
-    public float hp;
+    [HideInInspector] public float hp;
     [SerializeField] float damage;      //与えるダメージ
     //[SerializeField] private float detectDistance = 5f; //感知する距離
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
@@ -208,10 +208,13 @@ public class GoTower : MonoBehaviour
         // 敵がいなければ移動
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
-            Vector3 dir = target.position - transform.position;
-            Vector3 scale = transform.localScale;
-            scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            // if (CompareTag("Ally"))
+            //{
+                Vector3 dir = target.position - transform.position;
+                Vector3 scale = transform.localScale;
+                scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                transform.localScale = scale;
+           // }
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }

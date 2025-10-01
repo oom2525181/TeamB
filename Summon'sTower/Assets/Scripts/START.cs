@@ -29,6 +29,10 @@ public class START : MonoBehaviour
     {
         SceneManager.LoadScene("Gacha");
     }
+    public void reload()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //リスタート
+    }
 
     public void Start_Battle()
     {
