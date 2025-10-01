@@ -16,11 +16,8 @@ public class GoTower : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
-<<<<<<< HEAD
     public int poison = 0;             //毒のダメージを受ける回数
     private float poisonTimer = 0f;    //毒の時間経過用
-=======
->>>>>>> 673b6114abd80c8e211df21b1701ebfc76b9cf57
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
     public bool Type_Metal = false;    //被ダメージ1ダメージ固定
     public bool OneAttack = false;     //1回攻撃したら消える
@@ -206,7 +203,6 @@ public class GoTower : MonoBehaviour
         //    transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         //}
 
-<<<<<<< HEAD
         if (poison > 0 && !gameDirector.isEND)
         {
             sr.color = new Color(0.4f, 0.0f, 0.6f); // 紫にする
@@ -227,8 +223,7 @@ public class GoTower : MonoBehaviour
         {
             sr.color = originalColor; // 毒が切れたら元に戻す
         }
-=======
->>>>>>> 673b6114abd80c8e211df21b1701ebfc76b9cf57
+
 
         //target が null か破壊されていないか確認
         if (target == null || target.gameObject == null)
