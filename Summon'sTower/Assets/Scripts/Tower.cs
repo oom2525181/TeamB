@@ -11,6 +11,9 @@ public class Tower : MonoBehaviour
     public EnemySpawner spawner;
     GameObject HpGauge;
 
+    GameObject director;
+    public GameDirector gameDirector;
+
     [SerializeField] private Image hpGaugeImage;
 
     [SerializeField] private GameObject panel;
@@ -22,7 +25,11 @@ public class Tower : MonoBehaviour
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         this.HpGauge = GameObject.Find("EnemyHpGauge");
         hp = MaxHP;
-        if(hpGaugeImage != null )
+
+        this.director = GameObject.Find("GameDirector");
+        gameDirector = director.GetComponent<GameDirector>();
+
+        if (hpGaugeImage != null )
         {
             hpGaugeImage.fillAmount = 1f;
         }
@@ -40,7 +47,7 @@ public class Tower : MonoBehaviour
         Debug.Log($"{name} が {dmg} ダメージを受けた！ 残りHP: {hp}");
 
         if (particleManager != null)
-            particleManager.PlayEffect(transform.position);
+            ParticleManager.Instance.PlayEffect("Hit", transform.position);
 
         //if(type== 1)
         //    Debug.Log("敵のタワーに" + dmg + " ダメージを与えてHPが " + hp + " になった！");
@@ -62,6 +69,7 @@ public class Tower : MonoBehaviour
             {
                 panel.SetActive(true); // パネル表示
             }
+            gameDirector.isEND = true;
             Destroy(gameObject);
             //SceneManager.LoadScene("EndScene");
             //Destroy(gameObject);

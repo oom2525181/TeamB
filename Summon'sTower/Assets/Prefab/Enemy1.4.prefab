@@ -171,7 +171,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 1, g: 0.504717, b: 0.52254707, a: 1}
+  m_Color: {r: 0.44829708, g: 0.096787095, b: 0.8207547, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -197,12 +197,14 @@ MonoBehaviour:
   speed: 7
   maxhp: 0
   hp: 0
-  damage: 2
+  damage: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
   damageInterval: 1
   Type_Metal: 0
+  OneAttack: 1
+  PoisonOnAttack: 15
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!58 &505301997726621042

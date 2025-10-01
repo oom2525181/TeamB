@@ -16,9 +16,12 @@ public class GoTower : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
+    private int poison = 0;             //毒のダメージを受ける回数
+    private float poisonTimer = 0f;    //毒の時間経過用
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
     public bool Type_Metal = false;    //被ダメージ1ダメージ固定
     public bool OneAttack = false;     //1回攻撃したら消える
+    public int PoisonOnAttack = 0;     //攻撃時に毒を与える量
     //private bool isHit = false;        //ぶつかっているかどうか
 
     public EnemySpawner spawner;
@@ -188,9 +191,24 @@ public class GoTower : MonoBehaviour
         //    transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         //}
 
+        if (poison > 0)
+        {
+            poisonTimer += Time.deltaTime;
+            if (poisonTimer >= 0.5f) // 0.5秒ごとにダメージ
+            {
+                poisonTimer = 0f;
+                hp -= 2;
+                ParticleManager.Instance.PlayEffect("Poison", transform.position);
+                poison--;
+                if (hp <= 0)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
         //target が null か破壊されていないか確認
-        if (target == null || target.gameObject == null)
+        if ((target == null || target.gameObject == null) && !gameDirector.isEND)
         {
             target = FindClosestTarget();
         }
@@ -283,6 +301,10 @@ public class GoTower : MonoBehaviour
             if (enemyUnit != null)
             {
                 enemyUnit.TakeDamage(damage);
+                if(PoisonOnAttack > 0)
+                {
+                    enemyUnit.poison += PoisonOnAttack;
+                }
                 if(OneAttack)
                     Destroy(gameObject);
             }
@@ -316,7 +338,7 @@ public class GoTower : MonoBehaviour
         // hp = Mathf.Clamp(hp, 0, maxhp);
 
         if (particleManager != null)
-            particleManager.PlayEffect(transform.position);
+            ParticleManager.Instance.PlayEffect("Hit", transform.position);
 
         if (hp <= 0)
         {
