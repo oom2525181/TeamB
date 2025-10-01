@@ -333,6 +333,8 @@ public class GoTower : MonoBehaviour
 
             lastDamageTime = Time.time;
             Debug.Log($"{name} Ç™ {closestEnemy.name} ÇçUåÇÇµÇΩÅI");
+
+            if(audioSource != null)
             audioSource.PlayOneShot(sound1);
         }
     }
@@ -359,8 +361,8 @@ public class GoTower : MonoBehaviour
 
         if (particleManager != null)
         {
-            particleManager.PlayEffect(transform.position);
-            
+            ParticleManager.Instance.PlayEffect("Hit", transform.position);
+
         }
             
 

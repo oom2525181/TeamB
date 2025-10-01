@@ -21,7 +21,7 @@ public class StageButtonManager : MonoBehaviour
         //    button.interactable = false;
         //}
 
-        Debug.Log($"[StageButtonManager] 最後にクリアしたステージ = {PlayerData.GetLastClearedStage()}");
+        //Debug.Log($"[StageButtonManager] 最後にクリアしたステージ = {PlayerData.GetLastClearedStage()}");
 
         // 前のステージをクリアしていれば表示
         if (PlayerData.IsStageCleared(stageNumber - 1))
