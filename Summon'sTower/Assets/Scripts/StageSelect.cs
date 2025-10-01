@@ -30,4 +30,16 @@ public class StageSelect : MonoBehaviour
     {
         SceneManager.LoadScene("Stage3 Scene");
     }
+    public void Stage4()
+    {
+        SceneManager.LoadScene("Stage4 Scene");
+    }
+    public void Stage5()
+    {
+        SceneManager.LoadScene("Stage5 Scene");
+    }
+    public void Stage6()
+    {
+        SceneManager.LoadScene("Stage6 Scene");
+    }
 }
