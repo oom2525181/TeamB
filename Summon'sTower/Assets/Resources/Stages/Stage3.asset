@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd01272badbd9741968b23970a203f6, type: 3}
   m_Name: Stage3
   m_EditorClassIdentifier: 
+  stageNumber: 3
   waves:
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: 1c3079cab1ff8604f8c7290ffd6699d2, type: 3}

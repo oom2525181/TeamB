@@ -12,33 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fd01272badbd9741968b23970a203f6, type: 3}
   m_Name: Stage2
   m_EditorClassIdentifier: 
+  stageNumber: 2
   waves:
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
+    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
     count: 3
     interval: 12
     isLoop: 0
     timer: 0
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
+    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
     count: 1
     interval: 10
     isLoop: 1
     timer: 0
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
+    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
     count: 2
     interval: 5
     isLoop: 0
     timer: 0
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
+    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
     count: 1
     interval: 23
     isLoop: 1
     timer: 0
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
+    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
     count: 1
     interval: 10
     isLoop: 0

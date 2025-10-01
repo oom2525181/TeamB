@@ -109,7 +109,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   damageInterval: 1
+  Type_Metal: 0
+  OneAttack: 0
+  PoisonOnAttack: 0
+  noReverse: 0
   spawner: {fileID: 0}
+  gameDirector: {fileID: 0}
 --- !u!58 &7341996721157793562
 CircleCollider2D:
   m_ObjectHideFlags: 0

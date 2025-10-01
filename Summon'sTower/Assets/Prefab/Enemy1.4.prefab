@@ -204,7 +204,7 @@ MonoBehaviour:
   damageInterval: 1
   Type_Metal: 0
   OneAttack: 1
-  PoisonOnAttack: 15
+  PoisonOnAttack: 10
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
 --- !u!58 &505301997726621042
