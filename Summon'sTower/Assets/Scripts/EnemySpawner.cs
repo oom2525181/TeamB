@@ -5,115 +5,153 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class EnemySpawner : MonoBehaviour
+
+//public class EnemySpawner : MonoBehaviour
+//{
+//    [System.Serializable]
+//    public class Wave
+//    {
+//        public GameObject[] enemyPrefabs; // このWaveで出る敵
+//        public int count = 1;             // 出現数
+//        public float interval = 3.5f;     // 出現間隔
+//    }
+//    [SerializeField] private Wave[] waves;
+
+
+
+
+//    private float timer = 0f;
+//    private float interval = 3.5f;
+//    public int Count;
+//    public bool isSTOPED = false;
+//    public bool isEND = false;
+//    public GameObject STOPPanel;
+//    public GameObject ENDPanel;
+
+//    [SerializeField] private GameObject[] enemies;
+
+//    Transform target;
+
+//    // Start is called before the first frame update
+//    void Start()
+//    {
+//        target = GameObject.Find("Ally'sTower").transform;
+//    }
+
+//    // Update is called once per frame
+//    void Update()
+//    {
+//        if (Input.GetKeyDown(KeyCode.Escape) && isEND == false)
+//        {
+//            STOP();
+//        }
+//        if (isEND == true)
+//        {
+//            STOPPanel.SetActive(false);
+//            ENDPanel.SetActive(true);
+//        }
+
+//        timer += Time.deltaTime;
+//        if(timer >= interval)
+//        {
+//            if (isSTOPED == false && isEND == false)
+//            {
+//                EnemySpawn();
+//            }
+//            timer = 0f;
+//        }
+//    }
+//    void EnemySpawn()
+//    {
+//        GameObject enemyPrefab = enemies[Random.Range(0, enemies.Length)];
+//        int enemyCount = Random.Range(1, 5);
+//        if (enemyPrefab == enemies[5])
+//            enemyCount = 2;
+//        else if (enemyPrefab == enemies[6])
+//            enemyCount = 1;
+
+
+//        for (int i = 0; i < enemyCount; i++)
+//        {
+//            float y = Random.Range(-1.0f, 0.4f);
+//            Instantiate(enemyPrefab, new Vector3(7.35f, y, 0), Quaternion.identity);
+//        }
+//    }
+//    public void STOP()
+//    {
+//        if (isSTOPED == true)
+//        {
+//            isSTOPED = false;
+//            STOPPanel.SetActive(false);
+//        }
+//        else
+//        {
+//            isSTOPED = true;
+//            STOPPanel.SetActive(true);
+//        }
+//    }
+//}
+
+[System.Serializable]
+public class Wave
 {
+    public GameObject[] enemyPrefabs; // このWaveで出る敵
+    public int count = 1;             // 出現数
+    public float interval = 3.5f;     // 出現間隔
+    public bool isLoop = false;
+
+    [HideInInspector] public float timer = 0f;
+}
+
+public class EnemySpawner: MonoBehaviour
+{
+        [SerializeField] private Wave[] waves;
+
+        [SerializeField] private StageConfig stageConfig;
+    private List<Wave> loopWaves = new List<Wave>();
+    private int currentWaveIndex = 0;
     private float timer = 0f;
-    private float interval = 6.5f;
-    public int Count;
-    public bool isSTOPED = false;
-    public bool isEND = false;
-    public GameObject STOPPanel;
-    public GameObject ENDPanel;
 
-    [SerializeField] GameObject Enemy1;
-    [SerializeField] GameObject Enemy2;
-    [SerializeField] GameObject Enemy3;
-    [SerializeField] GameObject Enemy4;
-    [SerializeField] GameObject Enemy5;
-    [SerializeField] GameObject Enemy6;
-
-    Transform target;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        target = GameObject.Find("Ally'sTower").transform;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && isEND == false)
+        // 通常Waveの進行
+        if (currentWaveIndex < stageConfig.waves.Length)
         {
-            STOP();
-        }
-        if (isEND == true)
-        {
-            STOPPanel.SetActive(false);
-            ENDPanel.SetActive(true);
+            var wave = stageConfig.waves[currentWaveIndex];
+            timer += Time.deltaTime;
+            if (timer >= wave.interval)
+            {
+                SpawnWave(wave);
+                timer = 0f;
+
+                if (wave.isLoop)
+                {
+                    loopWaves.Add(wave); // ループ用リストに登録
+                }
+
+                currentWaveIndex++; // 次のWaveへ進む
+            }
         }
 
-
-        timer += Time.deltaTime;
-        if(timer >= interval)
+        // ループWaveの処理
+        foreach (var loop in loopWaves)
         {
-            if (isSTOPED == false && isEND == false)
+            loop.timer += Time.deltaTime;
+            if (loop.timer >= loop.interval)
             {
-                EnemySpawn();
-            }
-            timer = 0f;
-        }
-    }
-    void EnemySpawn()
-    {
-        int TypeEnemy = Random.Range(1, 6);
-        if (TypeEnemy == 1)
-        {
-            int EnemyCount = Random.Range(1, 7);
-            for (int i = 0; i < EnemyCount; i++)
-            {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(Enemy1, new Vector3(5.7f, y, 0), transform.rotation);
-            }
-        }
-        else if (TypeEnemy == 2)
-        {
-            int EnemyCount = Random.Range(1, 7);
-            for (int i = 0; i < EnemyCount; i++)
-            {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(Enemy2, new Vector3(5.7f, y, 0), transform.rotation);
-            }
-        }
-        else if (TypeEnemy == 3)
-        {
-            int EnemyCount = Random.Range(1, 7);
-            for (int i = 0; i < EnemyCount; i++)
-            {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(Enemy3, new Vector3(5.7f, y, 0), transform.rotation);
-            }
-        }
-        else if (TypeEnemy == 4)
-        {
-            int EnemyCount = Random.Range(1, 7);
-            for (int i = 0; i < EnemyCount; i++)
-            {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(Enemy4, new Vector3(5.7f, y, 0), transform.rotation);
-            }
-        }
-        else if (TypeEnemy == 5)
-        {
-            int EnemyCount = Random.Range(1, 7);
-            for (int i = 0; i < EnemyCount; i++)
-            {
-                float y = Random.Range(0.4f, -1.0f);
-                Instantiate(Enemy5, new Vector3(5.7f, y, 0), transform.rotation);
+                SpawnWave(loop);
+                loop.timer = 0f;
             }
         }
     }
-    public void STOP()
+
+    void SpawnWave(Wave wave)
     {
-        if (isSTOPED == true)
+        for (int i = 0; i < wave.count; i++)
         {
-            isSTOPED = false;
-            STOPPanel.SetActive(false);
-        }
-        else
-        {
-            isSTOPED = true;
-            STOPPanel.SetActive(true);
+            var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
+            float y = Random.Range(-1.0f, 0.4f);
+            Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }
     }
 }

@@ -19,6 +19,38 @@ public class START : MonoBehaviour
 
     public void run_game()
     {
-        SceneManager.LoadScene("Scene");
+        SceneManager.LoadScene("Home");
+    }
+    public void edit_party()
+    {
+        SceneManager.LoadScene("CharacterSelect");
+    }
+    public void gacha()
+    {
+        SceneManager.LoadScene("Gacha");
+    }
+
+    public void Start_Battle()
+    {
+        var party = PartyManager.Instance.selectedParty;
+        // 1人でもセットされていればOK
+        bool hasCharacter = false;
+        foreach (var c in party)
+        {
+            if (c != null)
+            {
+                hasCharacter = true;
+                break;
+            }
+        }
+
+        if (hasCharacter)
+        {
+            SceneManager.LoadScene("StageSelect");
+        }
+        else
+        {
+            Debug.Log("最低1人キャラをセットしてください！");
+        }
     }
 }
