@@ -4505,7 +4505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves: []
-  stageConfig: {fileID: 11400000, guid: 19ff49211477a1c4e811c0bdf4a5f2e1, type: 2}
+  stageConfig: {fileID: 11400000, guid: b1a2bb0b095844843902aced17eb46bb, type: 2}
 --- !u!4 &1411599183
 Transform:
   m_ObjectHideFlags: 0
