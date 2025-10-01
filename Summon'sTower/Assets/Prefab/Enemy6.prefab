@@ -110,7 +110,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damageInterval: 0.5
+  Type_Metal: 0
+  OneAttack: 0
   spawner: {fileID: 0}
+  gameDirector: {fileID: 0}
+  sound1: {fileID: 8300000, guid: 45354ade7de3075479ee1caf40fa1e36, type: 3}
 --- !u!58 &2048080202131230914
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -4,67 +4,39 @@ using UnityEngine;
 
 public class ParticleManager : MonoBehaviour
 {
-    [System.Serializable]
-    public class ParticlePool
-    {
-        public string effectName;        // 識別用の名前
-        public GameObject prefab;        // エフェクトのPrefab
-        public int poolSize = 10;        // プールサイズ
-    }
+    [SerializeField] private GameObject hitEffectPrefab; // パーティクルのPrefab
+    [SerializeField] private int poolSize = 10;          // プールの数
 
-    [SerializeField] private List<ParticlePool> particlePools; // 複数のパーティクル設定リスト
-    private Dictionary<string, Queue<GameObject>> pools = new Dictionary<string, Queue<GameObject>>();
-
-    public static ParticleManager Instance { get; private set; }
+    private Queue<GameObject> particlePool = new Queue<GameObject>();
 
     private void Awake()
     {
-        // 各パーティクルごとにプールを作成
-        foreach (var pool in particlePools)
+        // プールを初期化
+        for (int i = 0; i < poolSize; i++)
         {
-            Queue<GameObject> queue = new Queue<GameObject>();
-
-            for (int i = 0; i < pool.poolSize; i++)
-            {
-                GameObject obj = Instantiate(pool.prefab, transform);
-                obj.SetActive(false);
-                queue.Enqueue(obj);
-            }
-
-            pools[pool.effectName] = queue;
+            GameObject obj = Instantiate(hitEffectPrefab);
+            obj.SetActive(false);
+            particlePool.Enqueue(obj);
         }
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        //DontDestroyOnLoad(gameObject);
     }
 
-    public void PlayEffect(string effectName, Vector3 position, float lifeTime = 1f)
+    public void PlayEffect(Vector3 position)
     {
-        if (!pools.ContainsKey(effectName))
+        if (particlePool.Count > 0)
         {
-            Debug.LogWarning($"Effect {effectName} は登録されていません");
-            return;
-        }
-
-        var queue = pools[effectName];
-        if (queue.Count > 0)
-        {
-            GameObject effect = queue.Dequeue();
+            GameObject effect = particlePool.Dequeue();
             effect.transform.position = position;
             effect.SetActive(true);
 
-            StartCoroutine(ReturnToPool(effectName, effect, lifeTime));
+            // 一定時間後に非アクティブ化してプールに戻す
+            StartCoroutine(ReturnToPool(effect, 1f)); // 1秒後に戻す
         }
     }
 
-    private IEnumerator ReturnToPool(string effectName, GameObject obj, float delay)
+    private IEnumerator<WaitForSeconds> ReturnToPool(GameObject obj, float delay)
     {
         yield return new WaitForSeconds(delay);
         obj.SetActive(false);
-        pools[effectName].Enqueue(obj);
+        particlePool.Enqueue(obj);
     }
 }

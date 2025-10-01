@@ -37,7 +37,7 @@ public class GameDirector : MonoBehaviour
         if (isEND == true)
         {
             STOPPanel.SetActive(false);
-            //ENDPanel.SetActive(true);
+            ENDPanel.SetActive(true);
         }
 
     }

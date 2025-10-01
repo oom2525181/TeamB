@@ -30,6 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Home.unity
     guid: 1628fcccae275cb4fa4183f366fc07bc
   - enabled: 1
+<<<<<<< HEAD
     path: Assets/Scenes/Stage5.unity
     guid: fa1f354587d303b4f8b2bbee4e7656b9
   - enabled: 1
@@ -47,5 +48,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage3.unity
     guid: 8fa1ee9912e92054f9a44fc7adc13ebb
+=======
+    path: Assets/Scenes/StageSelect.unity
+    guid: dfd071d82df107b42b09fcdcb1bec202
+  - enabled: 1
+    path: Assets/Scenes/Stage2 Scene.unity
+    guid: 80fa6b8b1fe7d95499b88a6cce0cee4e
+  - enabled: 1
+    path: Assets/Scenes/Stage3 Scene.unity
+    guid: b2c45f0722503ae4c8dbed0332c23ef2
+>>>>>>> 673b6114abd80c8e211df21b1701ebfc76b9cf57
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
