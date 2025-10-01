@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
+    - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
     count: 1
     interval: 10
     isLoop: 1
-    timer: 7.0571294
+    timer: 8.881898
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: d9a94b1a433cb2d4eb8346e5153f796c, type: 3}
     count: 1
