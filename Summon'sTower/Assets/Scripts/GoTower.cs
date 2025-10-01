@@ -17,7 +17,8 @@ public class GoTower : MonoBehaviour
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
-    public bool Type_Metal = false;
+    public bool Type_Metal = false;    //被ダメージ1ダメージ固定
+    public bool OneAttack = false;     //1回攻撃したら消える
     //private bool isHit = false;        //ぶつかっているかどうか
 
     public EnemySpawner spawner;
@@ -280,9 +281,17 @@ public class GoTower : MonoBehaviour
             Tower enemyTower = closestEnemy.GetComponent<Tower>();
 
             if (enemyUnit != null)
+            {
                 enemyUnit.TakeDamage(damage);
+                if(OneAttack)
+                    Destroy(gameObject);
+            }
             else if (enemyTower != null)
+            {
                 enemyTower.TakeDamage(damage);
+                if (OneAttack)
+                    Destroy(gameObject);
+            }
 
             lastDamageTime = Time.time;
             Debug.Log($"{name} が {closestEnemy.name} を攻撃した！");
