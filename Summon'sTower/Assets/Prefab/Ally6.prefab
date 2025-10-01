@@ -111,10 +111,8 @@ MonoBehaviour:
     m_Bits: 64
   damageInterval: 0.2
   Type_Metal: 0
-  OneAttack: 0
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
-  sound1: {fileID: 8300000, guid: 23b590275d5cf4844ab93f619299b52a, type: 3}
 --- !u!58 &7341996721157793562
 CircleCollider2D:
   m_ObjectHideFlags: 0

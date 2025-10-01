@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 6
   waves:
-  - enemyPrefabs: []
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
     count: 1
     interval: 2.5
     isLoop: 1
