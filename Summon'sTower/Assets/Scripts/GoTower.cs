@@ -208,10 +208,13 @@ public class GoTower : MonoBehaviour
         // “G‚ª‚¢‚È‚¯‚ê‚ÎˆÚ“®
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
-            Vector3 dir = target.position - transform.position;
-            Vector3 scale = transform.localScale;
-            scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            if (CompareTag("Ally"))
+            {
+                Vector3 dir = target.position - transform.position;
+                Vector3 scale = transform.localScale;
+                scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+                transform.localScale = scale;
+            }
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
