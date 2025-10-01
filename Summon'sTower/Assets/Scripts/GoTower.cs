@@ -197,7 +197,7 @@ public class GoTower : MonoBehaviour
             if (poisonTimer >= 0.5f) // 0.5秒ごとにダメージ
             {
                 poisonTimer = 0f;
-                hp -= 2;
+                hp -= (maxhp * 0.015f) + (hp * 0.01f) + 1;   //最大hpの1.5% + 現在のhpの1% + 1の毒ダメージ
                 ParticleManager.Instance.PlayEffect("Poison", transform.position);
                 poison--;
                 if (hp <= 0)
