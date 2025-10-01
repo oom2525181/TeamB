@@ -163,7 +163,7 @@ public class EnemySpawner: MonoBehaviour
         for (int i = 0; i < wave.count; i++)
         {
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
-            float y = Random.Range(-1.0f, 0.4f);
+            float y = Random.Range(-0.5f, 0.1f);
             Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }
     }

@@ -88,7 +88,7 @@ public class ButtonManager: MonoBehaviour
 
                 for (int i = 0; i < assignedCharacter.count; i++)
                 {
-                    float y = Random.Range(-1f, 0.4f);
+                    float y = Random.Range(-0.5f, 0.1f);
                     Instantiate(assignedCharacter.prefab, new Vector3(-7.2f, y, 0), transform.rotation);
                 }
 
