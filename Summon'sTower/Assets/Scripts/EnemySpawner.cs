@@ -112,35 +112,48 @@ public class EnemySpawner: MonoBehaviour
     private int currentWaveIndex = 0;
     private float timer = 0f;
 
+    GameObject director;
+    public GameDirector gameDirector;
+
+    void Start()
+    {
+        this.director = GameObject.Find("GameDirector");
+        gameDirector = director.GetComponent<GameDirector>();
+    }
+
     void Update()
     {
-        // 通常Waveの進行
-        if (currentWaveIndex < stageConfig.waves.Length)
+        if (!gameDirector.isEND)
         {
-            var wave = stageConfig.waves[currentWaveIndex];
-            timer += Time.deltaTime;
-            if (timer >= wave.interval)
+            // 通常Waveの進行
+            if (currentWaveIndex < stageConfig.waves.Length)
             {
-                SpawnWave(wave);
-                timer = 0f;
-
-                if (wave.isLoop)
+                var wave = stageConfig.waves[currentWaveIndex];
+                timer += Time.deltaTime;
+                if (timer >= wave.interval)
                 {
-                    loopWaves.Add(wave); // ループ用リストに登録
+                    SpawnWave(wave);
+                    timer = 0f;
+
+                    if (wave.isLoop)
+                    {
+                        loopWaves.Add(wave); // ループ用リストに登録
+                    }
+
+                    currentWaveIndex++; // 次のWaveへ進む
                 }
-
-                currentWaveIndex++; // 次のWaveへ進む
             }
-        }
 
-        // ループWaveの処理
-        foreach (var loop in loopWaves)
-        {
-            loop.timer += Time.deltaTime;
-            if (loop.timer >= loop.interval)
+
+            // ループWaveの処理
+            foreach (var loop in loopWaves)
             {
-                SpawnWave(loop);
-                loop.timer = 0f;
+                loop.timer += Time.deltaTime;
+                if (loop.timer >= loop.interval)
+                {
+                    SpawnWave(loop);
+                    loop.timer = 0f;
+                }
             }
         }
     }
@@ -150,7 +163,7 @@ public class EnemySpawner: MonoBehaviour
         for (int i = 0; i < wave.count; i++)
         {
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
-            float y = Random.Range(-1.0f, 0.4f);
+            float y = Random.Range(-0.5f, 0.1f);
             Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }
     }

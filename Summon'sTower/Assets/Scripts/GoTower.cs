@@ -10,14 +10,15 @@ public class GoTower : MonoBehaviour
     [SerializeField] Transform target;  //移動する場所、目的地
     [SerializeField] float speed;       //移動速度
     [SerializeField] float maxhp;          //最大体力
-    public float hp;
+    [HideInInspector] public float hp;
     [SerializeField] float damage;      //与えるダメージ
     //[SerializeField] private float detectDistance = 5f; //感知する距離
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
-    public bool Type_Metal = false;
+    public bool Type_Metal = false;    //被ダメージ1ダメージ固定
+    public bool OneAttack = false;     //1回攻撃したら消える
     //private bool isHit = false;        //ぶつかっているかどうか
 
     public EnemySpawner spawner;
@@ -208,13 +209,13 @@ public class GoTower : MonoBehaviour
         // 敵がいなければ移動
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
-            if (CompareTag("Ally"))
-            {
+            // if (CompareTag("Ally"))
+            //{
                 Vector3 dir = target.position - transform.position;
                 Vector3 scale = transform.localScale;
                 scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 transform.localScale = scale;
-            }
+           // }
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
@@ -280,9 +281,17 @@ public class GoTower : MonoBehaviour
             Tower enemyTower = closestEnemy.GetComponent<Tower>();
 
             if (enemyUnit != null)
+            {
                 enemyUnit.TakeDamage(damage);
+                if(OneAttack)
+                    Destroy(gameObject);
+            }
             else if (enemyTower != null)
+            {
                 enemyTower.TakeDamage(damage);
+                if (OneAttack)
+                    Destroy(gameObject);
+            }
 
             lastDamageTime = Time.time;
             Debug.Log($"{name} が {closestEnemy.name} を攻撃した！");
