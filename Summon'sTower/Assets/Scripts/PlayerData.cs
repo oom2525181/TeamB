@@ -19,14 +19,14 @@ public class PlayerData
     //ステージクリアを保存
     public static void SaveStageCleared(int stageNumber)
     {
-        Debug.Log($"SaveStageCleared 呼び出し: stageNumber = {stageNumber}");
+        //Debug.Log($"SaveStageCleared 呼び出し: stageNumber = {stageNumber}");
         int lastCleared = GetLastClearedStage();
-        Debug.Log($"Save前: 最後にクリアしたステージ = {lastCleared}");
+        //Debug.Log($"Save前: 最後にクリアしたステージ = {lastCleared}");
         if (stageNumber > lastCleared)
         {
             PlayerPrefs.SetInt("StageCleared", stageNumber);
             PlayerPrefs.Save();
-            Debug.Log($"保存完了: StageCleared = {stageNumber}");
+            //Debug.Log($"保存: StageCleared = {stageNumber}");
         }
     }
 

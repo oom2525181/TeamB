@@ -72,11 +72,11 @@ public class Tower : MonoBehaviour
             if (CompareTag("Enemy'sTower"))
             {
                 spawner.StageCleared();
-                Debug.Log("敵タワーなので StageCleared() 呼ぶよ");
+                //Debug.Log("敵タワーなので StageCleared() 呼ぶよ");
             }
             else
             {
-                Debug.Log("味方タワーなので StageCleared() 呼ばないよ");
+                //Debug.Log("味方タワーなので StageCleared() 呼ばないよ");
             }
 
             gameDirector.isEND = true;

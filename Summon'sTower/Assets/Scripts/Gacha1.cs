@@ -23,15 +23,17 @@ public class Gacha1 : MonoBehaviour
         
     }
 
+    //pullボタンのクリック
     public void OnClick()
     {
         CharacterData result = PullGacha();
         ShowResult(result);
     }
 
+    //ガチャを引く
     public CharacterData PullGacha()
     {
-        // 0〜Lineupの長さの範囲でランダムに選ぶ
+        // 0〜Lineupの範囲でランダムに選ぶ
         int index = Random.Range(0, Lineup.Length);
 
         CharacterData result = Lineup[index];
@@ -42,6 +44,7 @@ public class Gacha1 : MonoBehaviour
         return result;
     }
 
+    //結果の表示
     public void ShowResult(CharacterData character)
     {
         resultIcon.sprite = character.icon;

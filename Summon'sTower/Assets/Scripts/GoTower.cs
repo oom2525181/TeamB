@@ -1,4 +1,4 @@
-using JetBrains.Annotations;
+ï»¿using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,22 +7,28 @@ using UnityEngine;
 public class GoTower : MonoBehaviour
 {
     //private float speed = 5.0f;
-    [SerializeField] Transform target;  //ˆÚ“®‚·‚éêŠA–Ú“I’n
-    [SerializeField] float speed;       //ˆÚ“®‘¬“x
-    [SerializeField] float maxhp;          //Å‘å‘Ì—Í
-   /* [HideInInspector]*/ public float hp;
-    [SerializeField] float damage;      //—^‚¦‚éƒ_ƒ[ƒW
-    //[SerializeField] private float detectDistance = 5f; //Š´’m‚·‚é‹——£
-    [SerializeField] private LayerMask enemyLayer;      //Š´’m‚·‚éƒGƒ“ƒeƒBƒeƒB‚Ìí—Ş‚Ìİ’è—p
-    //[SerializeField] private int direction = 1;         //“G‚ğŠ´’m‚·‚é•ûŒü—p
-    public float damageInterval = 1f;  //ƒ_ƒ[ƒW‚ğ—^‚¦‚éŠÔŠu
-    public int poison = 0;             //“Å‚Ìƒ_ƒ[ƒW‚ğó‚¯‚é‰ñ”
-    private float poisonTimer = 0f;    //“Å‚ÌŠÔŒo‰ß—p
-    private float lastDamageTime = 0f; //ÅŒã‚Éƒ_ƒ[ƒW‚ğ—^‚¦‚½ŠÔ
-    public bool Type_Metal = false;    //”íƒ_ƒ[ƒW1ƒ_ƒ[ƒWŒÅ’è
-    public bool OneAttack = false;     //1‰ñUŒ‚‚µ‚½‚çÁ‚¦‚é
-    //private bool isHit = false;        //‚Ô‚Â‚©‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©
-    public bool noReverse = false;     //”½“]ˆ—‚·‚é‚©‚Ç‚¤‚©
+    [SerializeField] Transform target;  //ç§»å‹•ã™ã‚‹å ´æ‰€ã€ç›®çš„åœ°
+    [SerializeField] float speed;       //ç§»å‹•é€Ÿåº¦
+    [SerializeField] float maxhp;          //æœ€å¤§ä½“åŠ›
+    /* [HideInInspector]*/
+    public float hp;
+    [SerializeField] float damage;      //ä¸ãˆã‚‹ãƒ€ãƒ¡ãƒ¼ã‚¸
+    //[SerializeField] private float detectDistance = 5f; //æ„ŸçŸ¥ã™ã‚‹è·é›¢
+    [SerializeField] private LayerMask enemyLayer;      //æ„ŸçŸ¥ã™ã‚‹ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®ç¨®é¡ã®è¨­å®šç”¨
+    [SerializeField] private bool isHealer = false;  // ãƒ’ãƒ¼ãƒ©ãƒ¼ã‹ã©ã†ã‹
+    [SerializeField] private float healAmount = 0f;  // å›å¾©é‡
+    [SerializeField] private float healInterval = 2f; // å›å¾©é–“éš”
+    private float lastHealTime = 0f; // æœ€å¾Œã«å›å¾©ã—ãŸæ™‚é–“
+
+    //[SerializeField] private int direction = 1;         //æ•µã‚’æ„ŸçŸ¥ã™ã‚‹æ–¹å‘ç”¨
+    public float damageInterval = 1f;  //ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã‚‹é–“éš”
+    public int poison = 0;             //æ¯’ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ã‚‹å›æ•°
+    private float poisonTimer = 0f;    //æ¯’ã®æ™‚é–“çµŒéç”¨
+    private float lastDamageTime = 0f; //æœ€å¾Œã«ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆãŸæ™‚é–“
+    public bool Type_Metal = false;    //è¢«ãƒ€ãƒ¡ãƒ¼ã‚¸1ãƒ€ãƒ¡ãƒ¼ã‚¸å›ºå®š
+    public bool OneAttack = false;     //1å›æ”»æ’ƒã—ãŸã‚‰æ¶ˆãˆã‚‹
+    //private bool isHit = false;        //ã¶ã¤ã‹ã£ã¦ã„ã‚‹ã‹ã©ã†ã‹
+    public bool noReverse = false;     //åè»¢å‡¦ç†ã™ã‚‹ã‹ã©ã†ã‹
 
     public EnemySpawner spawner;
     GameObject director;
@@ -36,86 +42,86 @@ public class GoTower : MonoBehaviour
     private SpriteRenderer sr;
     private Color originalColor;
 
-    private ParticleManager particleManager; //ƒp[ƒeƒBƒNƒ‹—p
+    private ParticleManager particleManager; //ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ç”¨
 
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
-        originalColor = sr.color; // Œ³‚ÌF‚ğ•Û‘¶
+        originalColor = sr.color; // å…ƒã®è‰²ã‚’ä¿å­˜
     }
 
     private void Start()
     {
-        if (speed <= 0) //ƒfƒtƒHƒ‹ƒg‚ÌƒXƒs[ƒh
+        if (speed <= 0) //ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¹ãƒ”ãƒ¼ãƒ‰
             speed = 1.5f;
-        if (maxhp <= 0) //ƒfƒtƒHƒ‹ƒg‚Ì‘Ì—Í
+        if (maxhp <= 0) //ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ä½“åŠ›
             maxhp = 40;
-       
+
         hp = maxhp;
-        //target‚Ìİ’è
-        if (CompareTag("Ally")) 
-        target = GameObject.Find("Enemy'sTower").transform;
+        //targetã®è¨­å®š
+        if (CompareTag("Ally"))
+            target = GameObject.Find("Enemy'sTower").transform;
         else if (CompareTag("Enemy"))
             target = GameObject.Find("Ally'sTower").transform;
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
         this.director = GameObject.Find("GameDirector");
         gameDirector = director.GetComponent<GameDirector>();
-        attackRange = GetComponentInChildren<AttackRange>();  //qƒIƒuƒWƒFƒNƒg‚ÌQÆ
+        attackRange = GetComponentInChildren<AttackRange>();  //å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å‚ç…§
 
         particleManager = FindFirstObjectByType<ParticleManager>();
         audioSource = GetComponent<AudioSource>();
     }
-   /* public void OnCollisionEnter2D(Collision2D other)
-    {
-        //Debug.Log("‚Ô‚Â‚©‚Á‚½");
-            if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
-            {
+    /* public void OnCollisionEnter2D(Collision2D other)
+     {
+         //Debug.Log("ã¶ã¤ã‹ã£ãŸ");
+             if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+             {
+                 Destroy(other.gameObject);
+                 Destroy(gameObject);
+             }
+             else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
+             {
+                 Destroy(other.gameObject);
+                 Destroy(gameObject);
+             }
+
+             if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
+             {
+                 Destroy(other.gameObject);
+                 Destroy(gameObject);
+                 Debug.Log("æ•—åŒ—");
+                 spawner.isEND = true;
+             }
+             else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
+             {
                 Destroy(other.gameObject);
                 Destroy(gameObject);
-            }
-            else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-            }
-            
-            if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-                Debug.Log("”s–k");
+                Debug.Log("å‹åˆ©");
                 spawner.isEND = true;
-            }
-            else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
-            {
-               Destroy(other.gameObject);
-               Destroy(gameObject);
-               Debug.Log("Ÿ—˜");
-               spawner.isEND = true;
-            }
-    }*/
+             }
+     }*/
 
     //public void OnCollisionStay2D(Collision2D other)
     //{
-       
+
 
     //    GoTower gotower = other.gameObject.GetComponent<GoTower>();
 
     //    //if(gotower == null )
     //    //{
-    //    //   Debug.Log("Gotower‚ªnull");
+    //    //   Debug.Log("GotowerãŒnull");
     //    //}
 
-    //    //Õ“Ë‚µ‚½‚çUŒ‚
+    //    //è¡çªã—ãŸã‚‰æ”»æ’ƒ
     //    if (gotower != null && (spawner.isSTOPED == false && spawner.isEND == false))
     //    {
     //        if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
     //        {
     //            isHit = true;
-    //            //Debug.Log("‚Ô‚Â‚©‚Á‚Ä‚é");
+    //            //Debug.Log("ã¶ã¤ã‹ã£ã¦ã‚‹");
     //            if (Time.time - lastDamageTime >= damageInterval)
     //            {
-    //                Debug.Log("‚È‚®‚Á‚½");
+    //                Debug.Log("ãªãã£ãŸ");
     //                gotower.TakeDamage(damage);
     //                lastDamageTime = Time.time;
     //            }
@@ -123,20 +129,20 @@ public class GoTower : MonoBehaviour
     //        else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
     //        {
     //            isHit = true;
-    //            //Debug.Log("‚Ô‚Â‚©‚Á‚Ä‚é");
+    //            //Debug.Log("ã¶ã¤ã‹ã£ã¦ã‚‹");
     //            if (Time.time - lastDamageTime >= damageInterval)
     //            {
-    //                Debug.Log("‚È‚®‚Á‚½");
+    //                Debug.Log("ãªãã£ãŸ");
     //                gotower.TakeDamage(damage);
     //                lastDamageTime = Time.time;
     //            }
     //        }
     //    }
 
-    //    //–¡•û‚ª“G‚Ì“ƒ‚ÉUŒ‚
+    //    //å‘³æ–¹ãŒæ•µã®å¡”ã«æ”»æ’ƒ
     //    if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
     //    {
-    //        //Debug.Log("Ally‚É‚æ‚é‚æ‚Ñ‚¾‚µ");
+    //        //Debug.Log("Allyã«ã‚ˆã‚‹ã‚ˆã³ã ã—");
     //        Tower tower = other.gameObject.GetComponent<Tower>();
     //        if (tower != null)
     //        {
@@ -151,10 +157,10 @@ public class GoTower : MonoBehaviour
     //            Debug.Log("nulL!!!!!!");
     //        }
     //    }
-    //    //“G‚ª–¡•û‚Ì“ƒ‚ÉUŒ‚
+    //    //æ•µãŒå‘³æ–¹ã®å¡”ã«æ”»æ’ƒ
     //    else if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
     //    {
-    //        //Debug.Log("Enemy‚É‚æ‚é‚æ‚Ñ‚¾‚µ");
+    //        //Debug.Log("Enemyã«ã‚ˆã‚‹ã‚ˆã³ã ã—");
     //        Tower tower = other.gameObject.GetComponent<Tower>();
     //        if (tower != null)
     //        {
@@ -183,10 +189,10 @@ public class GoTower : MonoBehaviour
 
         //Vector2 dirVector = Vector2.right * direction;
 
-        //RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVector,detectDistance,enemyLayer); //³–Ê‚É‚¢‚éƒGƒ“ƒeƒBƒeƒB‚Ìæ“¾
+        //RaycastHit2D hit = Physics2D.Raycast(transform.position, dirVector,detectDistance,enemyLayer); //æ­£é¢ã«ã„ã‚‹ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã®å–å¾—
         //if(hit.collider != null)
         //{
-        //   // Debug.Log("‚½[‚°‚Á‚Æ");
+        //   // Debug.Log("ãŸãƒ¼ã’ã£ã¨");
         //    target = hit.transform;  
         //}
         //else
@@ -205,7 +211,7 @@ public class GoTower : MonoBehaviour
 
         if (poison > 0 && !gameDirector.isEND)
         {
-            sr.color = new Color(0.4f, 0.0f, 0.6f); // ‡‚É‚·‚é
+            sr.color = new Color(0.4f, 0.0f, 0.6f); // ç´«ã«ã™ã‚‹
             poisonTimer += Time.deltaTime;
             if (poisonTimer >= 0.5f)
             {
@@ -221,17 +227,17 @@ public class GoTower : MonoBehaviour
         }
         else
         {
-            sr.color = originalColor; // “Å‚ªØ‚ê‚½‚çŒ³‚É–ß‚·
+            sr.color = originalColor; // æ¯’ãŒåˆ‡ã‚ŒãŸã‚‰å…ƒã«æˆ»ã™
         }
 
 
-        //target ‚ª null ‚©”j‰ó‚³‚ê‚Ä‚¢‚È‚¢‚©Šm”F
+        //target ãŒ null ã‹ç ´å£Šã•ã‚Œã¦ã„ãªã„ã‹ç¢ºèª
         if (target == null || target.gameObject == null)
         {
             target = FindClosestTarget();
         }
 
-        // UŒ‚‘ÎÛ‚ª‚¢‚é‚©ƒ`ƒFƒbƒN
+        // æ”»æ’ƒå¯¾è±¡ãŒã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯
         bool hasEnemyInRange = false;
         foreach (GameObject enemy in attackRange.enemiesInRange)
         {
@@ -242,7 +248,7 @@ public class GoTower : MonoBehaviour
             }
         }
 
-        // “G‚ª‚¢‚È‚¯‚ê‚ÎˆÚ“®
+        // æ•µãŒã„ãªã‘ã‚Œã°ç§»å‹•
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
             if (!noReverse)
@@ -258,13 +264,15 @@ public class GoTower : MonoBehaviour
 
         if (!gameDirector.isSTOPED && !gameDirector.isEND)
         {
-            // UŒ‚ˆ—
+            // æ”»æ’ƒå‡¦ç†
             AttackClosestEnemy();
-            
+
+            if (isHealer)
+                HealAlliesInRange();
         }
     }
 
-    // Å‚à‹ß‚¢“G‚©é‚ğ•Ô‚·
+    // æœ€ã‚‚è¿‘ã„æ•µã‹åŸã‚’è¿”ã™
     Transform FindClosestTarget()
     {
         float closestDist = float.MaxValue;
@@ -285,14 +293,14 @@ public class GoTower : MonoBehaviour
         if (closestEnemy != null)
             return closestEnemy.transform;
 
-        // “G‚ª‚¢‚È‚¯‚ê‚Îé‚ğƒ^[ƒQƒbƒg‚É
+        // æ•µãŒã„ãªã‘ã‚Œã°åŸã‚’ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã«
         if (CompareTag("Ally"))
             return GameObject.Find("Enemy'sTower")?.transform;
         else
             return GameObject.Find("Ally'sTower")?.transform;
     }
 
-    // UŒ‚ˆ—
+    // æ”»æ’ƒå‡¦ç†
     void AttackClosestEnemy()
     {
         if (Time.time - lastDamageTime < damageInterval) return;
@@ -320,43 +328,43 @@ public class GoTower : MonoBehaviour
             if (enemyUnit != null)
             {
                 enemyUnit.TakeDamage(damage);
-                if(OneAttack)
+                if (OneAttack)
                     Destroy(gameObject);
             }
             else if (enemyTower != null)
             {
-            
+
                 enemyTower.TakeDamage(damage);
                 if (OneAttack)
                     Destroy(gameObject);
             }
 
             lastDamageTime = Time.time;
-            Debug.Log($"{name} ‚ª {closestEnemy.name} ‚ğUŒ‚‚µ‚½I");
+            Debug.Log($"{name} ãŒ {closestEnemy.name} ã‚’æ”»æ’ƒã—ãŸï¼");
 
-            if(audioSource != null)
-            audioSource.PlayOneShot(sound1);
+            if (audioSource != null)
+                audioSource.PlayOneShot(sound1);
         }
     }
-    //”íƒ_ƒ[ƒW—p
+    //è¢«ãƒ€ãƒ¡ãƒ¼ã‚¸ç”¨
     public void TakeDamage(float dmg)
     {
-        if(poison > 0)
+        if (poison > 0)
         {
             dmg *= 1.1f;
         }
-       
+
         if (!Type_Metal)
         {
-            Debug.Log($"{name} ‚ª {dmg} ƒ_ƒ[ƒW‚ğó‚¯‚½I");
+            Debug.Log($"{name} ãŒ {dmg} ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸï¼");
             hp -= dmg;
         }
         else
         {
-            Debug.Log($"{name} ‚ª {1} ƒ_ƒ[ƒW‚ğó‚¯‚½I");
+            Debug.Log($"{name} ãŒ {1} ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸï¼");
             hp -= 1;
         }
-        //Debug.Log("‚Ä‚¢‚­‚¾‚ß[‚¶");
+        //Debug.Log("ã¦ã„ãã ã‚ãƒ¼ã˜");
         // hp = Mathf.Clamp(hp, 0, maxhp);
 
         if (particleManager != null)
@@ -364,7 +372,7 @@ public class GoTower : MonoBehaviour
             ParticleManager.Instance.PlayEffect("Hit", transform.position);
 
         }
-            
+
 
         if (hp <= 0)
         {
@@ -377,4 +385,33 @@ public class GoTower : MonoBehaviour
         if (CompareTag("Enemy") && obj.CompareTag("Ally")) return true;
         return false;
     }
+
+    void HealAlliesInRange()
+    {
+        if (Time.time - lastHealTime < healInterval) return;
+
+        foreach (GameObject obj in attackRange.enemiesInRange)
+        {
+            if (obj == null) continue;
+
+            GoTower unit = obj.GetComponent<GoTower>();
+            if (unit == null) continue;
+
+            // æ•µã˜ã‚ƒãªã‹ã£ãŸã‚‰å›å¾©
+            if (!IsEnemy(obj))
+            {
+                float healed = Mathf.Min(healAmount, unit.maxhp - unit.hp);
+                if (healed > 0)
+                {
+                    unit.hp += healed;
+                    Debug.Log($"{name} ãŒ {obj.name} ã‚’ {healed} å›å¾©ã—ãŸï¼");
+
+                    ParticleManager.Instance?.PlayEffect("Heal", obj.transform.position);
+                }
+            }
+        }
+
+        lastHealTime = Time.time;
+    }
 }
+

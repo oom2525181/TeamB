@@ -169,7 +169,8 @@ public class EnemySpawner: MonoBehaviour
     }
     public void StageCleared()
     {
-        Debug.Log($"StageCleared ŒÄ‚Ño‚µ: stageNumber = {stageConfig.stageNumber}");
+        //Debug.Log($"StageCleared ŒÄ‚Ño‚µ: stageNumber = {stageConfig.stageNumber}");
         PlayerData.SaveStageCleared(stageConfig.stageNumber);
+        stageConfig.isCleared = true;
     }
 }
