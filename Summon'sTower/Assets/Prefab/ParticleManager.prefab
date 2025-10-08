@@ -53,3 +53,7 @@ MonoBehaviour:
     prefab: {fileID: 1738828314989973533, guid: 005c04ed033266249b5f406c59ee85f9,
       type: 3}
     poolSize: 10
+  - effectName: Heal
+    prefab: {fileID: 1738828314989973533, guid: f8325187ebc8d544599aa1d101722aec,
+      type: 3}
+    poolSize: 10

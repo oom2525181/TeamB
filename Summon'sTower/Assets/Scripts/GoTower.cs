@@ -10,16 +10,10 @@ public class GoTower : MonoBehaviour
     [SerializeField] Transform target;  //移動する場所、目的地
     [SerializeField] float speed;       //移動速度
     [SerializeField] float maxhp;          //最大体力
-    /* [HideInInspector]*/
-    public float hp;
+   /* [HideInInspector]*/ public float hp;
     [SerializeField] float damage;      //与えるダメージ
     //[SerializeField] private float detectDistance = 5f; //感知する距離
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
-    [SerializeField] private bool isHealer = false;  // ヒーラーかどうか
-    [SerializeField] private float healAmount = 0f;  // 回復量
-    [SerializeField] private float healInterval = 2f; // 回復間隔
-    private float lastHealTime = 0f; // 最後に回復した時間
-
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
     public int poison = 0;             //毒のダメージを受ける回数
@@ -27,6 +21,7 @@ public class GoTower : MonoBehaviour
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
     public bool Type_Metal = false;    //被ダメージ1ダメージ固定
     public bool OneAttack = false;     //1回攻撃したら消える
+    public int PoisonOnAttack = 0;     //与える毒の量
     //private bool isHit = false;        //ぶつかっているかどうか
     public bool noReverse = false;     //反転処理するかどうか
 
@@ -56,11 +51,11 @@ public class GoTower : MonoBehaviour
             speed = 1.5f;
         if (maxhp <= 0) //デフォルトの体力
             maxhp = 40;
-
+       
         hp = maxhp;
         //targetの設定
-        if (CompareTag("Ally"))
-            target = GameObject.Find("Enemy'sTower").transform;
+        if (CompareTag("Ally")) 
+        target = GameObject.Find("Enemy'sTower").transform;
         else if (CompareTag("Enemy"))
             target = GameObject.Find("Ally'sTower").transform;
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
@@ -71,39 +66,39 @@ public class GoTower : MonoBehaviour
         particleManager = FindFirstObjectByType<ParticleManager>();
         audioSource = GetComponent<AudioSource>();
     }
-    /* public void OnCollisionEnter2D(Collision2D other)
-     {
-         //Debug.Log("ぶつかった");
-             if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
-             {
-                 Destroy(other.gameObject);
-                 Destroy(gameObject);
-             }
-             else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
-             {
-                 Destroy(other.gameObject);
-                 Destroy(gameObject);
-             }
-
-             if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
-             {
-                 Destroy(other.gameObject);
-                 Destroy(gameObject);
-                 Debug.Log("敗北");
-                 spawner.isEND = true;
-             }
-             else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
-             {
+   /* public void OnCollisionEnter2D(Collision2D other)
+    {
+        //Debug.Log("ぶつかった");
+            if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+            {
                 Destroy(other.gameObject);
                 Destroy(gameObject);
-                Debug.Log("勝利");
+            }
+            else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+            
+            if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+                Debug.Log("敗北");
                 spawner.isEND = true;
-             }
-     }*/
+            }
+            else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
+            {
+               Destroy(other.gameObject);
+               Destroy(gameObject);
+               Debug.Log("勝利");
+               spawner.isEND = true;
+            }
+    }*/
 
     //public void OnCollisionStay2D(Collision2D other)
     //{
-
+       
 
     //    GoTower gotower = other.gameObject.GetComponent<GoTower>();
 
@@ -251,9 +246,10 @@ public class GoTower : MonoBehaviour
         // 敵がいなければ移動
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
+           
+                Vector3 dir = target.position - transform.position;
             if (!noReverse)
             {
-                Vector3 dir = target.position - transform.position;
                 Vector3 scale = transform.localScale;
                 scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 transform.localScale = scale;
@@ -266,9 +262,7 @@ public class GoTower : MonoBehaviour
         {
             // 攻撃処理
             AttackClosestEnemy();
-
-            if (isHealer)
-                HealAlliesInRange();
+            
         }
     }
 
@@ -327,13 +321,17 @@ public class GoTower : MonoBehaviour
 
             if (enemyUnit != null)
             {
+                if (PoisonOnAttack > 0)
+                {
+                    enemyUnit.poison += PoisonOnAttack;
+                }
                 enemyUnit.TakeDamage(damage);
-                if (OneAttack)
+                if(OneAttack)
                     Destroy(gameObject);
             }
             else if (enemyTower != null)
             {
-
+            
                 enemyTower.TakeDamage(damage);
                 if (OneAttack)
                     Destroy(gameObject);
@@ -342,18 +340,18 @@ public class GoTower : MonoBehaviour
             lastDamageTime = Time.time;
             Debug.Log($"{name} が {closestEnemy.name} を攻撃した！");
 
-            if (audioSource != null)
-                audioSource.PlayOneShot(sound1);
+            if(audioSource != null)
+            audioSource.PlayOneShot(sound1);
         }
     }
     //被ダメージ用
     public void TakeDamage(float dmg)
     {
-        if (poison > 0)
+        if(poison > 0)
         {
             dmg *= 1.1f;
         }
-
+       
         if (!Type_Metal)
         {
             Debug.Log($"{name} が {dmg} ダメージを受けた！");
@@ -372,7 +370,7 @@ public class GoTower : MonoBehaviour
             ParticleManager.Instance.PlayEffect("Hit", transform.position);
 
         }
-
+            
 
         if (hp <= 0)
         {
@@ -385,33 +383,4 @@ public class GoTower : MonoBehaviour
         if (CompareTag("Enemy") && obj.CompareTag("Ally")) return true;
         return false;
     }
-
-    void HealAlliesInRange()
-    {
-        if (Time.time - lastHealTime < healInterval) return;
-
-        foreach (GameObject obj in attackRange.enemiesInRange)
-        {
-            if (obj == null) continue;
-
-            GoTower unit = obj.GetComponent<GoTower>();
-            if (unit == null) continue;
-
-            // 敵じゃなかったら回復
-            if (!IsEnemy(obj))
-            {
-                float healed = Mathf.Min(healAmount, unit.maxhp - unit.hp);
-                if (healed > 0)
-                {
-                    unit.hp += healed;
-                    Debug.Log($"{name} が {obj.name} を {healed} 回復した！");
-
-                    ParticleManager.Instance?.PlayEffect("Heal", obj.transform.position);
-                }
-            }
-        }
-
-        lastHealTime = Time.time;
-    }
 }
-
