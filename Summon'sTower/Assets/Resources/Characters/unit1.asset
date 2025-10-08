@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e4560e3ee87a43ab109c0cc670aa5, type: 3}
   m_Name: unit1
   m_EditorClassIdentifier: 
-  characterName: knight1
+  characterName: EnemyKnight
   icon: {fileID: 1803408233877473036, guid: 2256b36290f13ca4cbb472b6be246150, type: 3}
   cost: 15
   count: 1

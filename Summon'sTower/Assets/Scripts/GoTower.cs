@@ -14,6 +14,7 @@ public class GoTower : MonoBehaviour
     [SerializeField] float damage;      //与えるダメージ
     //[SerializeField] private float detectDistance = 5f; //感知する距離
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
+    [SerializeField] float GetChance;      //この敵をゲットできる確率
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
     public int poison = 0;             //毒のダメージを受ける回数
@@ -25,6 +26,7 @@ public class GoTower : MonoBehaviour
     //private bool isHit = false;        //ぶつかっているかどうか
     public bool noReverse = false;     //反転処理するかどうか
 
+    public GameObject attacker;
     public EnemySpawner spawner;
     GameObject director;
     public GameDirector gameDirector;
@@ -38,6 +40,11 @@ public class GoTower : MonoBehaviour
     private Color originalColor;
 
     private ParticleManager particleManager; //パーティクル用
+
+    [Header("倒したときの報酬キャラ名")]
+    public string rewardCharacterName;
+
+    private PartyManager partyManager;
 
     void Awake()
     {
@@ -65,117 +72,118 @@ public class GoTower : MonoBehaviour
 
         particleManager = FindFirstObjectByType<ParticleManager>();
         audioSource = GetComponent<AudioSource>();
-    }
-   /* public void OnCollisionEnter2D(Collision2D other)
-    {
-        //Debug.Log("ぶつかった");
-            if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-            }
-            else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-            }
-            
-            if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
-            {
-                Destroy(other.gameObject);
-                Destroy(gameObject);
-                Debug.Log("敗北");
-                spawner.isEND = true;
-            }
-            else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
-            {
-               Destroy(other.gameObject);
-               Destroy(gameObject);
-               Debug.Log("勝利");
-               spawner.isEND = true;
-            }
-    }*/
+        partyManager = FindFirstObjectByType<PartyManager>();
+}
+/* public void OnCollisionEnter2D(Collision2D other)
+ {
+     //Debug.Log("ぶつかった");
+         if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+         {
+             Destroy(other.gameObject);
+             Destroy(gameObject);
+         }
+         else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
+         {
+             Destroy(other.gameObject);
+             Destroy(gameObject);
+         }
 
-    //public void OnCollisionStay2D(Collision2D other)
-    //{
-       
+         if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
+         {
+             Destroy(other.gameObject);
+             Destroy(gameObject);
+             Debug.Log("敗北");
+             spawner.isEND = true;
+         }
+         else  if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
+         {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            Debug.Log("勝利");
+            spawner.isEND = true;
+         }
+ }*/
 
-    //    GoTower gotower = other.gameObject.GetComponent<GoTower>();
+//public void OnCollisionStay2D(Collision2D other)
+//{
 
-    //    //if(gotower == null )
-    //    //{
-    //    //   Debug.Log("Gotowerがnull");
-    //    //}
 
-    //    //衝突したら攻撃
-    //    if (gotower != null && (spawner.isSTOPED == false && spawner.isEND == false))
-    //    {
-    //        if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
-    //        {
-    //            isHit = true;
-    //            //Debug.Log("ぶつかってる");
-    //            if (Time.time - lastDamageTime >= damageInterval)
-    //            {
-    //                Debug.Log("なぐった");
-    //                gotower.TakeDamage(damage);
-    //                lastDamageTime = Time.time;
-    //            }
-    //        }
-    //        else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
-    //        {
-    //            isHit = true;
-    //            //Debug.Log("ぶつかってる");
-    //            if (Time.time - lastDamageTime >= damageInterval)
-    //            {
-    //                Debug.Log("なぐった");
-    //                gotower.TakeDamage(damage);
-    //                lastDamageTime = Time.time;
-    //            }
-    //        }
-    //    }
+//    GoTower gotower = other.gameObject.GetComponent<GoTower>();
 
-    //    //味方が敵の塔に攻撃
-    //    if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
-    //    {
-    //        //Debug.Log("Allyによるよびだし");
-    //        Tower tower = other.gameObject.GetComponent<Tower>();
-    //        if (tower != null)
-    //        {
-    //            if (Time.time - lastDamageTime >= damageInterval)
-    //            {
-    //                tower.TakeDamage(damage);
-    //                lastDamageTime = Time.time;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("nulL!!!!!!");
-    //        }
-    //    }
-    //    //敵が味方の塔に攻撃
-    //    else if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
-    //    {
-    //        //Debug.Log("Enemyによるよびだし");
-    //        Tower tower = other.gameObject.GetComponent<Tower>();
-    //        if (tower != null)
-    //        {
-    //            if (Time.time - lastDamageTime >= damageInterval)
-    //            {
-    //                tower.TakeDamage(damage);
-    //                lastDamageTime = Time.time;
-    //            }
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("nulL!!!!!!");
-    //        }
-    //    }
-    //}
-    //public void OnCollisionExit2D(Collision2D other)
-    //{
-    //    isHit = false;
-    //}
-    void Update()
+//    //if(gotower == null )
+//    //{
+//    //   Debug.Log("Gotowerがnull");
+//    //}
+
+//    //衝突したら攻撃
+//    if (gotower != null && (spawner.isSTOPED == false && spawner.isEND == false))
+//    {
+//        if (other.gameObject.CompareTag("Enemy") && CompareTag("Ally"))
+//        {
+//            isHit = true;
+//            //Debug.Log("ぶつかってる");
+//            if (Time.time - lastDamageTime >= damageInterval)
+//            {
+//                Debug.Log("なぐった");
+//                gotower.TakeDamage(damage);
+//                lastDamageTime = Time.time;
+//            }
+//        }
+//        else if (other.gameObject.CompareTag("Ally") && CompareTag("Enemy"))
+//        {
+//            isHit = true;
+//            //Debug.Log("ぶつかってる");
+//            if (Time.time - lastDamageTime >= damageInterval)
+//            {
+//                Debug.Log("なぐった");
+//                gotower.TakeDamage(damage);
+//                lastDamageTime = Time.time;
+//            }
+//        }
+//    }
+
+//    //味方が敵の塔に攻撃
+//    if (other.gameObject.CompareTag("Enemy'sTower") && CompareTag("Ally"))
+//    {
+//        //Debug.Log("Allyによるよびだし");
+//        Tower tower = other.gameObject.GetComponent<Tower>();
+//        if (tower != null)
+//        {
+//            if (Time.time - lastDamageTime >= damageInterval)
+//            {
+//                tower.TakeDamage(damage);
+//                lastDamageTime = Time.time;
+//            }
+//        }
+//        else
+//        {
+//            Debug.Log("nulL!!!!!!");
+//        }
+//    }
+//    //敵が味方の塔に攻撃
+//    else if (other.gameObject.CompareTag("Ally'sTower") && CompareTag("Enemy"))
+//    {
+//        //Debug.Log("Enemyによるよびだし");
+//        Tower tower = other.gameObject.GetComponent<Tower>();
+//        if (tower != null)
+//        {
+//            if (Time.time - lastDamageTime >= damageInterval)
+//            {
+//                tower.TakeDamage(damage);
+//                lastDamageTime = Time.time;
+//            }
+//        }
+//        else
+//        {
+//            Debug.Log("nulL!!!!!!");
+//        }
+//    }
+//}
+//public void OnCollisionExit2D(Collision2D other)
+//{
+//    isHit = false;
+//}
+void Update()
     {
         //if (isHit && target == null)
         //{
@@ -325,6 +333,7 @@ public class GoTower : MonoBehaviour
                 {
                     enemyUnit.poison += PoisonOnAttack;
                 }
+                enemyUnit.attacker = this.gameObject;
                 enemyUnit.TakeDamage(damage);
                 if(OneAttack)
                     Destroy(gameObject);
@@ -356,11 +365,13 @@ public class GoTower : MonoBehaviour
         {
             Debug.Log($"{name} が {dmg} ダメージを受けた！");
             hp -= dmg;
+            hp = Mathf.Max(hp, 0);
         }
         else
         {
             Debug.Log($"{name} が {1} ダメージを受けた！");
             hp -= 1;
+            hp = Mathf.Max(hp, 0);
         }
         //Debug.Log("ていくだめーじ");
         // hp = Mathf.Clamp(hp, 0, maxhp);
@@ -374,6 +385,26 @@ public class GoTower : MonoBehaviour
 
         if (hp <= 0)
         {
+            if (CompareTag("Enemy"))
+            {
+                // 味方に倒された場合
+                if (attacker != null && attacker.CompareTag("Ally"))
+                {
+                    //float chance = 0.05f; // 5%
+                    //float chance = 1.00f; // 100%
+                    if (Random.value <= GetChance)
+                    {
+                        // PartyManagerからキャラクター取得
+                        CharacterData rewardCharacter = PartyManager.Instance.GetCharacterByName(rewardCharacterName);
+                        if (rewardCharacter != null && !rewardCharacter.isOwned)
+                        {
+                            rewardCharacter.isOwned = true;
+                            PlayerData.SaveCharacterOwned(rewardCharacter.characterName);
+                            Debug.Log($"{rewardCharacter.characterName} を獲得しました！");
+                        }
+                    }
+                }
+            }
             Destroy(gameObject);
         }
     }
@@ -383,4 +414,6 @@ public class GoTower : MonoBehaviour
         if (CompareTag("Enemy") && obj.CompareTag("Ally")) return true;
         return false;
     }
+
+
 }

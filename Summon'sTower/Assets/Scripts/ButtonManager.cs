@@ -21,7 +21,7 @@ public class ButtonManager: MonoBehaviour
     {
         // LaneSelector をシーン内から自動取得
         if (laneSelector == null)
-            laneSelector = FindObjectOfType<LaneSelector>();
+            laneSelector = FindFirstObjectByType<LaneSelector>();
 
         button = GetComponent<Button>();
         cooldownText = transform.Find("CooldownText")?.GetComponent<TextMeshProUGUI>();
@@ -88,7 +88,7 @@ public class ButtonManager: MonoBehaviour
         {
             if (gameDirector.money >= assignedCharacter.cost)
             {
-                int lane = 0; // デフォルト
+                int lane = 1; // デフォルト
                 if (laneSelector != null)
                 {
                     lane = laneSelector.GetSelectedLane();
@@ -103,9 +103,9 @@ public class ButtonManager: MonoBehaviour
                 float y = 0f;
                 switch (lane)
                 {
-                    case 0: y = -2f; break;
+                    case 0: y =  2.5f; break;
                     case 1: y = -0.68f; break;
-                    case 2: y =  3f; break;
+                    case 2: y =  -3f; break;
                         // 必要に応じて追加
                 }
 

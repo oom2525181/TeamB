@@ -34,12 +34,6 @@ public class Tower : MonoBehaviour
             hpGaugeImage.fillAmount = 1f;
         }
 
-        // ƒpƒlƒ‹©“®æ“¾
-        if (CompareTag("Ally'sTower"))
-            panel = FindInactivePanel("DefeatPanel");
-        else if (CompareTag("Enemy'sTower"))
-            panel = FindInactivePanel("VictoryPanel");
-
         if (panel != null)
             panel.SetActive(false); // Å‰‚Í”ñ•\¦
 

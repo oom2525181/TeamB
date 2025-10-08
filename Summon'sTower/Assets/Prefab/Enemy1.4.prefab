@@ -203,15 +203,18 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  GetChance: 0
   damageInterval: 1
   poison: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 2
   noReverse: 1
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: 7d49753040a504e4294f90c3c49af4f2, type: 3}
+  rewardCharacterName: enemy Thief
 --- !u!58 &505301997726621042
 CircleCollider2D:
   m_ObjectHideFlags: 0
