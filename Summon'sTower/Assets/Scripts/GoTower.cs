@@ -10,28 +10,39 @@ public class GoTower : MonoBehaviour
     [SerializeField] Transform target;  //移動する場所、目的地
     [SerializeField] float speed;       //移動速度
     [SerializeField] float maxhp;          //最大体力
-    [HideInInspector] public float hp;
+   /* [HideInInspector]*/ public float hp;
     [SerializeField] float damage;      //与えるダメージ
     //[SerializeField] private float detectDistance = 5f; //感知する距離
     [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
     //[SerializeField] private int direction = 1;         //敵を感知する方向用
     public float damageInterval = 1f;  //ダメージを与える間隔
-    private int poison = 0;             //毒のダメージを受ける回数
+    public int poison = 0;             //毒のダメージを受ける回数
     private float poisonTimer = 0f;    //毒の時間経過用
     private float lastDamageTime = 0f; //最後にダメージを与えた時間
     public bool Type_Metal = false;    //被ダメージ1ダメージ固定
     public bool OneAttack = false;     //1回攻撃したら消える
-    public int PoisonOnAttack = 0;     //攻撃時に毒を与える量
     //private bool isHit = false;        //ぶつかっているかどうか
+    public bool noReverse = false;     //反転処理するかどうか
 
     public EnemySpawner spawner;
     GameObject director;
     public GameDirector gameDirector;
+    public AudioClip sound1;
+    AudioSource audioSource;
     private AttackRange attackRange;
     //GameObject closestEnemy = null;
     //float closestDist = float.MaxValue;
 
+    private SpriteRenderer sr;
+    private Color originalColor;
+
     private ParticleManager particleManager; //パーティクル用
+
+    void Awake()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color; // 元の色を保存
+    }
 
     private void Start()
     {
@@ -52,6 +63,7 @@ public class GoTower : MonoBehaviour
         attackRange = GetComponentInChildren<AttackRange>();  //子オブジェクトの参照
 
         particleManager = FindFirstObjectByType<ParticleManager>();
+        audioSource = GetComponent<AudioSource>();
     }
    /* public void OnCollisionEnter2D(Collision2D other)
     {
@@ -191,13 +203,14 @@ public class GoTower : MonoBehaviour
         //    transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         //}
 
-        if (poison > 0)
+        if (poison > 0 && !gameDirector.isEND)
         {
+            sr.color = new Color(0.4f, 0.0f, 0.6f); // 紫にする
             poisonTimer += Time.deltaTime;
-            if (poisonTimer >= 0.5f) // 0.5秒ごとにダメージ
+            if (poisonTimer >= 0.5f)
             {
                 poisonTimer = 0f;
-                hp -= 2;
+                hp -= (maxhp * 0.015f) + (hp * 0.01f) + 1;
                 ParticleManager.Instance.PlayEffect("Poison", transform.position);
                 poison--;
                 if (hp <= 0)
@@ -206,9 +219,14 @@ public class GoTower : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            sr.color = originalColor; // 毒が切れたら元に戻す
+        }
+
 
         //target が null か破壊されていないか確認
-        if ((target == null || target.gameObject == null) && !gameDirector.isEND)
+        if (target == null || target.gameObject == null)
         {
             target = FindClosestTarget();
         }
@@ -227,13 +245,13 @@ public class GoTower : MonoBehaviour
         // 敵がいなければ移動
         if (!hasEnemyInRange && target != null && !gameDirector.isSTOPED && !gameDirector.isEND)
         {
-            // if (CompareTag("Ally"))
-            //{
+            if (!noReverse)
+            {
                 Vector3 dir = target.position - transform.position;
                 Vector3 scale = transform.localScale;
                 scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
                 transform.localScale = scale;
-           // }
+            }
 
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
@@ -242,6 +260,7 @@ public class GoTower : MonoBehaviour
         {
             // 攻撃処理
             AttackClosestEnemy();
+            
         }
     }
 
@@ -301,15 +320,12 @@ public class GoTower : MonoBehaviour
             if (enemyUnit != null)
             {
                 enemyUnit.TakeDamage(damage);
-                if(PoisonOnAttack > 0)
-                {
-                    enemyUnit.poison += PoisonOnAttack;
-                }
                 if(OneAttack)
                     Destroy(gameObject);
             }
             else if (enemyTower != null)
             {
+            
                 enemyTower.TakeDamage(damage);
                 if (OneAttack)
                     Destroy(gameObject);
@@ -317,12 +333,18 @@ public class GoTower : MonoBehaviour
 
             lastDamageTime = Time.time;
             Debug.Log($"{name} が {closestEnemy.name} を攻撃した！");
+
+            if(audioSource != null)
+            audioSource.PlayOneShot(sound1);
         }
     }
     //被ダメージ用
     public void TakeDamage(float dmg)
     {
-        
+        if(poison > 0)
+        {
+            dmg *= 1.1f;
+        }
        
         if (!Type_Metal)
         {
@@ -338,7 +360,11 @@ public class GoTower : MonoBehaviour
         // hp = Mathf.Clamp(hp, 0, maxhp);
 
         if (particleManager != null)
+        {
             ParticleManager.Instance.PlayEffect("Hit", transform.position);
+
+        }
+            
 
         if (hp <= 0)
         {

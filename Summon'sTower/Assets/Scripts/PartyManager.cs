@@ -21,7 +21,7 @@ public class PartyManager : MonoBehaviour
         //    PlayerPrefs.DeleteKey(c.characterName + "_Owned"); // ï€ë∂Ç‡è¡Ç∑
         //}
 
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
 
         if (Instance == null)
         {

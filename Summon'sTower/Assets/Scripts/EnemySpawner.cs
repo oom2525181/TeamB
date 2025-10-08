@@ -163,8 +163,13 @@ public class EnemySpawner: MonoBehaviour
         for (int i = 0; i < wave.count; i++)
         {
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
-            float y = Random.Range(-0.5f, 0.1f);
+            float y = Random.Range(-0.88f, -0.48f);
             Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }
+    }
+    public void StageCleared()
+    {
+        Debug.Log($"StageCleared ŒÄ‚Ño‚µ: stageNumber = {stageConfig.stageNumber}");
+        PlayerData.SaveStageCleared(stageConfig.stageNumber);
     }
 }

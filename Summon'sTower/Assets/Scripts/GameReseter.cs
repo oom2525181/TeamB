@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class StageSelect : MonoBehaviour
+public class GameReseter : MonoBehaviour
 {
+    void Awake()
+    {
+        PlayerPrefs.DeleteAll();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -17,10 +19,4 @@ public class StageSelect : MonoBehaviour
     {
         
     }
-
-    public void Stage1()
-    {
-        SceneManager.LoadScene("Stage1");
-    }
-
 }

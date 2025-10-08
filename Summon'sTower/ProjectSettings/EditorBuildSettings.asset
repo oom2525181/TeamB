@@ -5,47 +5,38 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: c9e07710170dd384393e607b1e84f986
   - enabled: 1
-    path: Assets/Scenes/Scene.unity
-    guid: 7770fa221475a824ba874ad8f4674bc0
-  - enabled: 1
-    path: Assets/Scenes/Gacha.unity
-    guid: fb69b271c071f82469ac12375501a088
-  - enabled: 1
-    path: Assets/Scenes/EndScene.unity
-    guid: 357b04ed41093464b896cb0f6df3322c
-  - enabled: 1
-    path: Assets/Scenes/Main Scene.unity
-    guid: cc08d4697153a534989e7af717c7d110
+    path: Assets/Scenes/Home.unity
+    guid: 1628fcccae275cb4fa4183f366fc07bc
   - enabled: 1
     path: Assets/Scenes/CharacterSelect.unity
     guid: 380fe7692ab1ba04f9abaae12bfd8ae3
   - enabled: 1
-    path: Assets/Scenes/Home.unity
-    guid: 1628fcccae275cb4fa4183f366fc07bc
+    path: Assets/Scenes/Gacha.unity
+    guid: fb69b271c071f82469ac12375501a088
   - enabled: 1
-    path: Assets/Scenes/Stage5 Scene.unity
+    path: Assets/Scenes/Stage1.unity
+    guid: cc08d4697153a534989e7af717c7d110
+  - enabled: 1
+    path: Assets/Scenes/Stage2.unity
+    guid: ad354153b3c2fe54ca0025e6b5feb10d
+  - enabled: 1
+    path: Assets/Scenes/Stage3.unity
+    guid: 8fa1ee9912e92054f9a44fc7adc13ebb
+  - enabled: 1
+    path: Assets/Scenes/Stage4.unity
+    guid: 80094ade41019ab4f99789f87ddb6ccf
+  - enabled: 1
+    path: Assets/Scenes/Stage5.unity
     guid: fa1f354587d303b4f8b2bbee4e7656b9
+  - enabled: 1
+    path: Assets/Scenes/Stage6.unity
+    guid: 032ededb50f347645aef74e7333a54f3
   - enabled: 1
     path: Assets/Scenes/StageSelect.unity
     guid: dfd071d82df107b42b09fcdcb1bec202
-  - enabled: 1
-    path: Assets/Scenes/Stage2 Scene.unity
-    guid: ad354153b3c2fe54ca0025e6b5feb10d
-  - enabled: 1
-    path: Assets/Scenes/Stage4 Scene.unity
-    guid: 80094ade41019ab4f99789f87ddb6ccf
-  - enabled: 1
-    path: Assets/Scenes/Stage6 Scene.unity
-    guid: 032ededb50f347645aef74e7333a54f3
-  - enabled: 1
-    path: Assets/Scenes/Stage3 Scene.unity
-    guid: 8fa1ee9912e92054f9a44fc7adc13ebb
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
