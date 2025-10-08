@@ -170,8 +170,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_FlipX: 0
   m_FlipY: 0
@@ -179,7 +178,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &3742822078933618428
@@ -198,17 +197,15 @@ MonoBehaviour:
   speed: 0
   maxhp: 80
   hp: 100
-  damage: 5
+  damage: 1
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  isHealer: 1
-  healAmount: 10
-  healInterval: 2
-  damageInterval: 0.5
+  damageInterval: 1
   poison: 0
   Type_Metal: 0
   OneAttack: 0
+  PoisonOnAttack: 0
   noReverse: 1
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
@@ -275,7 +272,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!1001 &3807640856108744430
 PrefabInstance:
   m_ObjectHideFlags: 0
