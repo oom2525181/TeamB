@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 3.5
+  speed: 2
   maxhp: 50
   hp: 0
   damage: 10
@@ -203,9 +203,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   damageInterval: 1
-  poison: 2
+  poison: 0
   Type_Metal: 0
   OneAttack: 0
+  PoisonOnAttack: 2
   noReverse: 1
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
