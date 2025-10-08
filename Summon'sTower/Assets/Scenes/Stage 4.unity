@@ -4393,7 +4393,7 @@ MonoBehaviour:
   spawner: {fileID: 1411599182}
   gameDirector: {fileID: 0}
   hpGaugeImage: {fileID: 588215668}
-  panel: {fileID: 0}
+  panel: {fileID: 736701466}
 --- !u!50 &788382298
 Rigidbody2D:
   serializedVersion: 4
@@ -9318,6 +9318,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
+        type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 354144010}
+    - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
+        type: 3}
+      propertyPath: hpGaugeImage
+      value: 
+      objectReference: {fileID: 877429842}
     - target: {fileID: 2622908933836977585, guid: 8b2addb107f8fc0439e56f449a868745,
         type: 3}
       propertyPath: m_RootOrder

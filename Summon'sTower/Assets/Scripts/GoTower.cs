@@ -248,7 +248,7 @@ public class GoTower : MonoBehaviour
         {
            
                 Vector3 dir = target.position - transform.position;
-            if (!noReverse)
+             if (!noReverse)
             {
                 Vector3 scale = transform.localScale;
                 scale.x = (dir.x < 0) ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
