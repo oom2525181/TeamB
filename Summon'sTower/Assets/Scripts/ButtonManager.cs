@@ -15,9 +15,14 @@ public class ButtonManager: MonoBehaviour
     private TextMeshProUGUI cooldownText;
     private bool onCooldown = false;
 
+    public LaneSelector laneSelector;
 
     private void Start()
     {
+        // LaneSelector をシーン内から自動取得
+        if (laneSelector == null)
+            laneSelector = FindObjectOfType<LaneSelector>();
+
         button = GetComponent<Button>();
         cooldownText = transform.Find("CooldownText")?.GetComponent<TextMeshProUGUI>();
 
@@ -83,17 +88,34 @@ public class ButtonManager: MonoBehaviour
         {
             if (gameDirector.money >= assignedCharacter.cost)
             {
-                if (assignedCharacter.count <= 0)
-                    assignedCharacter.count = 1;
+                int lane = 0; // デフォルト
+                if (laneSelector != null)
+                {
+                    lane = laneSelector.GetSelectedLane();
+                    if (lane < 0)
+                    {
+                        Debug.LogWarning("レーンが選択されていません！");
+                        return;
+                    }
+                }
+
+                // 選択されたレーンに対応するY座標を決める
+                float y = 0f;
+                switch (lane)
+                {
+                    case 0: y = -2f; break;
+                    case 1: y = -0.68f; break;
+                    case 2: y =  3f; break;
+                        // 必要に応じて追加
+                }
 
                 for (int i = 0; i < assignedCharacter.count; i++)
                 {
-                    float y = Random.Range(-0.88f, -0.48f);
-                    Instantiate(assignedCharacter.prefab, new Vector3(-7.2f, y, 0), transform.rotation);
+                    Instantiate(assignedCharacter.prefab, new Vector3(-7.2f, y, 0), Quaternion.identity);
                 }
 
                 gameDirector.money -= assignedCharacter.cost;
-                Debug.Log($"{assignedCharacter.name} を召喚しました！");
+                Debug.Log($"{assignedCharacter.name} をレーン {lane} に召喚しました！");
 
                 StartCoroutine(StartCooldown(assignedCharacter.cooldownTime));
             }
