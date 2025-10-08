@@ -202,15 +202,18 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  GetChance: 0
   damageInterval: 15
   poison: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
   noReverse: 1
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: fbb54521d0a9ca24a988c3216de0bf09, type: 3}
+  rewardCharacterName: enemy archer
 --- !u!50 &5888903821005727012
 Rigidbody2D:
   serializedVersion: 4

@@ -15,19 +15,19 @@ MonoBehaviour:
   stageNumber: 2
   waves:
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
+    - {fileID: 1000010755293042, guid: 9a3112926e8e68a448180b146e4b47a3, type: 3}
     count: 3
     interval: 12
     isLoop: 0
     timer: 0
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
+    - {fileID: 1000010755293042, guid: 9a3112926e8e68a448180b146e4b47a3, type: 3}
     count: 1
     interval: 10
     isLoop: 1
     timer: 0
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
+    - {fileID: 1000010755293042, guid: 9a3112926e8e68a448180b146e4b47a3, type: 3}
     count: 2
     interval: 5
     isLoop: 0
@@ -44,3 +44,4 @@ MonoBehaviour:
     interval: 10
     isLoop: 0
     timer: 0
+  isCleared: 0

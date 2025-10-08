@@ -116,4 +116,14 @@ public class PartyManager : MonoBehaviour
             }
         }
     }
+    public CharacterData GetCharacterByName(string name)
+    {
+        foreach (var c in allCharacters)
+        {
+            if (c.characterName == name)
+                return c;
+        }
+        Debug.LogWarning($"[PartyManager] キャラクター '{name}' が見つかりません。");
+        return null;
+    }
 }

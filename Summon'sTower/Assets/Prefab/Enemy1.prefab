@@ -116,9 +116,11 @@ MonoBehaviour:
   OneAttack: 0
   PoisonOnAttack: 0
   noReverse: 1
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: ab28eb6899d05384e8a56118a1a8efc3, type: 3}
+  rewardCharacterName: enemy knight1
 --- !u!50 &6432103161269987705
 Rigidbody2D:
   serializedVersion: 4

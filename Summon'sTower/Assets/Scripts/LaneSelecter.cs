@@ -8,8 +8,8 @@ public class LaneSelector : MonoBehaviour
     [SerializeField] private Button[] laneButtons;  // レーンボタン配列
     private int selectedLane = -1;                  // 選択中レーン
 
-    private Color selectedColor = new Color(0.5f, 0.5f, 0.5f, 1f); // グレー
-    private Color unselectedColor = new Color(1f, 1f, 1f, 0f);     // 透明
+    private Color selectedColor = new Color(0.5f, 0.5f, 0.5f, 0.15f); // 薄グレー
+    private Color unselectedColor = new Color(1f, 1f, 1f, 0f);       // 完全透明
 
     void Start()
     {
@@ -21,6 +21,7 @@ public class LaneSelector : MonoBehaviour
         }
 
         // 最初は全て透明
+        selectedLane = 1;
         UpdateButtonColors();
     }
 
