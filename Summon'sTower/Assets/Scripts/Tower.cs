@@ -34,10 +34,14 @@ public class Tower : MonoBehaviour
             hpGaugeImage.fillAmount = 1f;
         }
 
+        // パネル自動取得
+        if (CompareTag("Ally'sTower"))
+            panel = FindInactivePanel("DefeatPanel");
+        else if (CompareTag("Enemy'sTower"))
+            panel = FindInactivePanel("VictoryPanel");
+
         if (panel != null)
-        {
-            panel.SetActive(false); // 非表示
-        }
+            panel.SetActive(false); // 最初は非表示
 
         particleManager = FindFirstObjectByType<ParticleManager>();
     }
@@ -90,6 +94,16 @@ public class Tower : MonoBehaviour
     public void ChangeHP()
     {
         float fillAmount = hp / MaxHP;
+    }
+
+    GameObject FindInactivePanel(string name)
+    {
+        foreach (Transform t in Resources.FindObjectsOfTypeAll<Transform>())
+        {
+            if (t.name == name)
+                return t.gameObject;
+        }
+        return null;
     }
 }
 
