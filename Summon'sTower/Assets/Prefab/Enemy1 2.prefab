@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3480095934253138810}
   - component: {fileID: 2338233169324989048}
   m_Layer: 6
-  m_Name: Enemy1
+  m_Name: Enemy1 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 0
-  maxhp: 50
+  maxhp: 20
   hp: 0
   damage: 3
   enemyLayer:
