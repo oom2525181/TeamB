@@ -15,8 +15,9 @@ MonoBehaviour:
   stageNumber: 3
   waves:
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
+    - {fileID: 1000010755293042, guid: 0329f4596294d504a8bbfda946265664, type: 3}
     count: 1
-    interval: 8
+    interval: 2
     isLoop: 1
-    timer: 6.651655
+    timer: 0.205183
+  isCleared: 1

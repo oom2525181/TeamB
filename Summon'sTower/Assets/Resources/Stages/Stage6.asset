@@ -13,16 +13,5 @@ MonoBehaviour:
   m_Name: Stage6
   m_EditorClassIdentifier: 
   stageNumber: 6
-  waves:
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
-    count: 1
-    interval: 2.5
-    isLoop: 1
-    timer: 2.1500237
-  - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: c4fc47c8511db434d9ceebcaa8c74aa3, type: 3}
-    count: 1
-    interval: 6
-    isLoop: 1
-    timer: 3.5722902
+  waves: []
+  isCleared: 0
