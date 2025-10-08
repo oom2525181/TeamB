@@ -163,6 +163,19 @@ public class EnemySpawner: MonoBehaviour
         for (int i = 0; i < wave.count; i++)
         {
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
+
+            if (prefab == null)
+            {
+                Debug.LogError($"Wave {wave} の enemyPrefabs に null が含まれています。");
+                continue;
+            }
+
+            if (prefab.scene.rootCount != 0)
+            {
+                Debug.LogError($"Wave {wave} の {prefab.name} はシーン上のオブジェクトを参照しています！Prefabを登録してください。");
+                continue;
+            }
+
             float y = Random.Range(-0.88f, -0.48f);
             Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }

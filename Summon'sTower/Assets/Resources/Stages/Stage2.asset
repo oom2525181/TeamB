@@ -21,7 +21,7 @@ MonoBehaviour:
     isLoop: 1
     timer: 0.21738826
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: 0329f4596294d504a8bbfda946265664, type: 3}
+    - {fileID: 9110708590597508679, guid: 1c3079cab1ff8604f8c7290ffd6699d2, type: 3}
     count: 1
     interval: 8
     isLoop: 1

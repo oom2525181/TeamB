@@ -20,7 +20,7 @@ public class GameDirector : MonoBehaviour
     void Start()
     {
         this.moneytext = GameObject.Find("MoneyText").GetComponent<TextMeshProUGUI>();
-        InvokeRepeating("GetMoney", 0.1f, 0.1f);
+        InvokeRepeating("GetMoney", 0.09f, 0.09f);
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
