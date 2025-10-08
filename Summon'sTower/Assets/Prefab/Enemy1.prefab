@@ -118,7 +118,7 @@ MonoBehaviour:
   noReverse: 1
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
-  sound1: {fileID: 8300000, guid: ab28eb6899d05384e8a56118a1a8efc3, type: 3}
+  sound1: {fileID: 8300000, guid: 1ff76a0221b054a4dbc890d83df8cbbb, type: 3}
 --- !u!50 &6432103161269987705
 Rigidbody2D:
   serializedVersion: 4
@@ -202,7 +202,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1ff76a0221b054a4dbc890d83df8cbbb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
