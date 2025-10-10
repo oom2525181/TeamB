@@ -15,9 +15,69 @@ MonoBehaviour:
   stageNumber: 3
   waves:
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: 0329f4596294d504a8bbfda946265664, type: 3}
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
     count: 1
     interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 0
+    timer: 0.205183
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    count: 1
+    interval: 10
     isLoop: 1
     timer: 0.205183
   isCleared: 1

@@ -110,7 +110,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  GetChance: 0
+  GetChance: 0.05
   damageInterval: 1
   poison: 0
   Type_Metal: 0

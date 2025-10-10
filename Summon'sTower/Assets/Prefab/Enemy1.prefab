@@ -196,13 +196,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 0
-  maxhp: 40
+  maxhp: 30
   hp: 0
   damage: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  GetChance: 0
+  GetChance: 0.05
   damageInterval: 1
   poison: 0
   Type_Metal: 0
