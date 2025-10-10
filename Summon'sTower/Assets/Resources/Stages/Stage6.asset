@@ -13,5 +13,35 @@ MonoBehaviour:
   m_Name: Stage6
   m_EditorClassIdentifier: 
   stageNumber: 6
-  waves: []
-  isCleared: 0
+  waves:
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: e88c16171fed8b649851394539be6108, type: 3}
+    count: 1
+    interval: 3
+    isLoop: 1
+    timer: 2.893649
+  - enemyPrefabs:
+    - {fileID: 1000010755293042, guid: 17821887495cf9240a8a3005fd369bf5, type: 3}
+    count: 1
+    interval: 4
+    isLoop: 1
+    timer: 1.0672616
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 5fcee904bc3324e43ba5ec658979726f, type: 3}
+    count: 1
+    interval: 5
+    isLoop: 1
+    timer: 2.0806422
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
+    count: 1
+    interval: 5
+    isLoop: 1
+    timer: 4.084352
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: f81902c13ef019d4488700335c9f9ed0, type: 3}
+    count: 1
+    interval: 5
+    isLoop: 1
+    timer: 1.1403843
+  isCleared: 1

@@ -196,9 +196,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 0
-  maxhp: 50
+  maxhp: 40
   hp: 0
-  damage: 3
+  damage: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

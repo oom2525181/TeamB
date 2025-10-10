@@ -107,19 +107,22 @@ MonoBehaviour:
   speed: 2.3
   maxhp: 15
   hp: 0
-  damage: 20
+  damage: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
+  GetChance: 0
   damageInterval: 1
   poison: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
   noReverse: 0
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: 69e47958ebaf09643bf386534507360b, type: 3}
+  rewardCharacterName: 
 --- !u!58 &7341996721157793562
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -15,8 +15,21 @@ MonoBehaviour:
   stageNumber: 5
   waves:
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: f81902c13ef019d4488700335c9f9ed0, type: 3}
+    - {fileID: 9110708590597508679, guid: e88c16171fed8b649851394539be6108, type: 3}
+    count: 1
+    interval: 2
+    isLoop: 1
+    timer: 1.5342951
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
     count: 1
     interval: 5
     isLoop: 1
-    timer: 3.9130533
+    timer: 0.55043626
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: f81902c13ef019d4488700335c9f9ed0, type: 3}
+    count: 2
+    interval: 6
+    isLoop: 1
+    timer: 4.556424
+  isCleared: 1

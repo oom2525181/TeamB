@@ -17,7 +17,7 @@ MonoBehaviour:
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: 9a3112926e8e68a448180b146e4b47a3, type: 3}
     count: 1
-    interval: 6
+    interval: 5
     isLoop: 1
-    timer: 2.3385317
-  isCleared: 0
+    timer: 4.7386065
+  isCleared: 1
