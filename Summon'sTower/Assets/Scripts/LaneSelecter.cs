@@ -9,7 +9,10 @@ public class LaneSelector : MonoBehaviour
     private int selectedLane = -1;                  // 選択中レーン
 
     private Color selectedColor = new Color(0.5f, 0.5f, 0.5f, 0.15f); // 薄グレー
-    private Color unselectedColor = new Color(1f, 1f, 1f, 0f);       // 完全透明
+    private Color unselectedColor = new Color(1f, 1f, 1f, 0f);       // 透明
+
+    GameObject director;
+    public GameDirector gameDirector;
 
     void Start()
     {
@@ -23,6 +26,20 @@ public class LaneSelector : MonoBehaviour
         // 最初は全て透明
         selectedLane = 1;
         UpdateButtonColors();
+
+        director = GameObject.Find("GameDirector");
+        gameDirector = director.GetComponent<GameDirector>();
+    }
+
+    void Update()
+    {
+        if (gameDirector != null && gameDirector.isEND)
+        {
+            foreach (Button btn in laneButtons)
+            {
+                btn.gameObject.SetActive(false);
+            }
+        }
     }
 
     public void SelectLane(int laneIndex)
