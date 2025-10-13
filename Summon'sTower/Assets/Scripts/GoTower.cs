@@ -392,17 +392,15 @@ void Update()
                 {
                     //float chance = 0.05f; // 5%
                     //float chance = 1.00f; // 100%
-                    if (Random.value <= GetChance)
+                     if (!string.IsNullOrEmpty(rewardCharacterName) && Random.value <= GetChance)
                     {
-                        // PartyManagerからキャラクター取得
                         CharacterData rewardCharacter = PartyManager.Instance.GetCharacterByName(rewardCharacterName);
                         if (rewardCharacter != null && !rewardCharacter.isOwned)
-                        {
-                            rewardCharacter.isOwned = true;
-                            PlayerData.SaveCharacterOwned(rewardCharacter.characterName);
+                         {
+                            gameDirector.AddCharacter(rewardCharacterName);
                             Debug.Log($"{rewardCharacter.characterName} を獲得しました！");
-                        }
-                    }
+                         }
+        }
                 }
             }
             Destroy(gameObject);

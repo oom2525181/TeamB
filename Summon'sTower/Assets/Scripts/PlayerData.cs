@@ -39,4 +39,25 @@ public class PlayerData
     {
         return GetLastClearedStage() >= stageNumber;
     }
+
+
+    // コインを保存する
+    public static void SaveCoin(int coin)
+    {
+        PlayerPrefs.SetInt("PlayerCoin", coin);
+        PlayerPrefs.Save();
+    }
+
+    // コインを取得する
+    public static int GetCoin()
+    {
+        return PlayerPrefs.GetInt("PlayerCoin", 0);
+    }
+    //持ってるコインに獲得したコインを追加
+    public static void AddCoin(int amount)
+    {
+        int currentCoin = GetCoin();
+        currentCoin += amount;
+        SaveCoin(currentCoin);
+    }
 }
