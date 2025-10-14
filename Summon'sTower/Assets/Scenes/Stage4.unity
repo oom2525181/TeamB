@@ -1363,113 +1363,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &272194007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272194005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4520e348a8fb0ed499a2b292464c5815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHP: 500
-  hp: 0
-  spawner: {fileID: 0}
-  gameDirector: {fileID: 0}
-  hpGaugeImage: {fileID: 877429842}
-  panel: {fileID: 0}
---- !u!68 &272194008
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 272194005}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 2.3626297, y: 1.9220774}
-  - {x: 2.6446574, y: 1.9296786}
-  - {x: 2.69252, y: 2.6557653}
-  - {x: 2.391983, y: 2.758079}
-  - {x: 2.3919816, y: 2.758079}
-  - {x: 3.9370914, y: 3.8384}
-  - {x: 4.222714, y: 3.7016072}
-  - {x: 6.297009, y: 4.809565}
-  - {x: 5.9971323, y: 6.0352592}
-  - {x: 6.4066167, y: 5.962197}
-  - {x: 6.2523904, y: 7.750384}
-  - {x: 5.2586074, y: 7.684627}
-  - {x: 5.0982895, y: 6.9566092}
-  - {x: 4.6984887, y: 6.942986}
-  - {x: 4.553113, y: 7.6768813}
-  - {x: 3.4600043, y: 7.701597}
-  - {x: 3.2546751, y: 6.9706244}
-  - {x: 3.086418, y: 8.291767}
-  - {x: 1.8794101, y: 8.404989}
-  - {x: 1.6199106, y: 7.6285143}
-  - {x: 0.9478916, y: 8.046861}
-  - {x: 0.88149023, y: 10.155185}
-  - {x: 2.1545382, y: 10.122985}
-  - {x: 1.2693859, y: 10.905536}
-  - {x: 2.4612794, y: 11.404876}
-  - {x: -0.000552997, y: 11.8944025}
-  - {x: -0.37021518, y: 10.274003}
-  - {x: -0.27208614, y: 8.356511}
-  - {x: -0.7013644, y: 8.3277855}
-  - {x: -0.95169836, y: 7.206146}
-  - {x: -1.6065419, y: 7.2722573}
-  - {x: -1.9912574, y: 8.410883}
-  - {x: -3.126216, y: 8.374186}
-  - {x: -3.3029249, y: 7.0960474}
-  - {x: -3.4829824, y: 7.7204113}
-  - {x: -4.45471, y: 7.8084154}
-  - {x: -4.64438, y: 7.096889}
-  - {x: -5.0644875, y: 7.100504}
-  - {x: -5.3169947, y: 7.8908587}
-  - {x: -6.1444664, y: 7.970017}
-  - {x: -6.367715, y: 6.229365}
-  - {x: -5.8597674, y: 6.1709323}
-  - {x: -6.166433, y: 5.0707726}
-  - {x: -4.026383, y: 3.972201}
-  - {x: -2.321887, y: 2.7700453}
-  - {x: -2.0481994, y: -2.8535898}
-  - {x: 2.1754186, y: -2.850669}
-  - {x: 2.3454943, y: 1.9341242}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!1 &328160335
 GameObject:
   m_ObjectHideFlags: 0
@@ -8545,6 +8438,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
         type: 3}
+      propertyPath: MaxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
+        type: 3}
       propertyPath: panel
       value: 
       objectReference: {fileID: 354144010}
@@ -8702,14 +8600,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5376213773663834453, guid: 8b2addb107f8fc0439e56f449a868745,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 272194008}
-    - targetCorrespondingSourceObject: {fileID: 5376213773663834453, guid: 8b2addb107f8fc0439e56f449a868745,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 272194007}
     - targetCorrespondingSourceObject: {fileID: 5376213773663834453, guid: 8b2addb107f8fc0439e56f449a868745,
         type: 3}
       insertIndex: -1

@@ -197,9 +197,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 2
-  maxhp: 50
+  maxhp: 90
   hp: 0
-  damage: 10
+  damage: 20
   damageInterval: 1
   GetChance: 0.05
   GetCoin: 10

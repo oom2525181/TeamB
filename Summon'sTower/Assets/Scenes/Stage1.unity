@@ -8272,6 +8272,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
         type: 3}
+      propertyPath: MaxHP
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1790267129663504906, guid: 8b2addb107f8fc0439e56f449a868745,
+        type: 3}
       propertyPath: panel
       value: 
       objectReference: {fileID: 797630340}

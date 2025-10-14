@@ -47,15 +47,8 @@ public class UpgradeUI : MonoBehaviour
         int cost = 100; // コイン消費量（仮）
         int currentCoin = PlayerData.GetCoin();
 
-        if (currentCoin >= cost)
-        {
-            // 通常のコイン消費による強化
-            PlayerData.SaveCoin(currentCoin - cost);
-            currentCharacter.UpGradeCount++;
 
-            Debug.Log($"{currentCharacter.characterName} をアップグレード！（コイン消費）");
-        }
-        else if (currentCharacter.collectCount > 1)
+        if (currentCharacter.collectCount > 1)
         {
             // 重複キャラを素材に強化
             currentCharacter.collectCount--;
@@ -64,6 +57,15 @@ public class UpgradeUI : MonoBehaviour
 
             Debug.Log($"{currentCharacter.characterName} をアップグレード！（重複キャラ使用）");
         }
+        else if (currentCoin >= cost)
+        {
+            // 通常のコイン消費による強化
+            PlayerData.SaveCoin(currentCoin - cost);
+            currentCharacter.UpGradeCount++;
+
+            Debug.Log($"{currentCharacter.characterName} をアップグレード！（コイン消費）");
+        }
+        
         else
         {
             Debug.Log("コストも素材も足りません！");

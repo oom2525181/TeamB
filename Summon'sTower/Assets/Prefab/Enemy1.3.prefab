@@ -198,19 +198,26 @@ MonoBehaviour:
   speed: 0
   maxhp: 80
   hp: 100
-  damage: 1
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
+  damage: 5
   damageInterval: 1
-  poison: 0
+  GetChance: 0
+  GetCoin: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
+  UpGradeCount: 0
+  maxhp2: 0
+  damage2: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  poison: 0
   noReverse: 1
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: 77477b84a3c97e14abd36796aaf78ffa, type: 3}
+  rewardCharacterName: 
 --- !u!58 &505301997726621042
 CircleCollider2D:
   m_ObjectHideFlags: 0
