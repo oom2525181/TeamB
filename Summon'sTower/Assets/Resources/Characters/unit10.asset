@@ -20,3 +20,4 @@ MonoBehaviour:
   prefab: {fileID: 3214252275018464279, guid: 71b6ae780c7ed5d4bba9c8da609b03c3, type: 3}
   isOwned: 0
   DefaultCharacter: 0
+  collectCount: 0

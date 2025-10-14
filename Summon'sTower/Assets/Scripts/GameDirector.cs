@@ -19,6 +19,7 @@ public class GameDirector : MonoBehaviour
 
     public TextMeshProUGUI resultInfoText;
     public GameObject resultInfoPanel;         //結果表示用
+    private bool resultShown = false;
     public int GetCoin = 0;
 
     public Dictionary<string, int> collectedCharacters = new Dictionary<string, int>();
@@ -97,20 +98,44 @@ public class GameDirector : MonoBehaviour
     }
     public void ShowResultInfo()
     {
-        resultInfoPanel.SetActive(true);  // 結果パネルを表示  
+        if (resultShown) return;  // すでに表示済みなら何もしない
+        resultShown = true;
 
-        Dictionary<string, int> finalRewards = new Dictionary<string, int>();
+        resultInfoPanel.SetActive(true);
 
-          string result = "◆ 獲得したキャラクター\n";
+        string result = "Dropped Characters\n";
+
         foreach (var pair in collectedCharacters)
         {
-            result += $"{pair.Key} × {pair.Value}\n";
+            CharacterData rewardCharacter = PartyManager.Instance.GetCharacterByName(pair.Key);
+            if (rewardCharacter != null)
+            {
+                rewardCharacter.collectCount += pair.Value;
+                PlayerPrefs.SetInt(rewardCharacter.characterName + "_Count", rewardCharacter.collectCount);
+
+                if (!rewardCharacter.isOwned)
+                {
+                    rewardCharacter.isOwned = true;
+                    PlayerData.SaveCharacterOwned(rewardCharacter.characterName);
+                    Debug.Log($"{rewardCharacter.characterName} を初めて入手しました！");
+                }
+                else
+                {
+                    Debug.Log($"{rewardCharacter.characterName} を追加で入手！ (x{rewardCharacter.collectCount})");
+                }
+
+                result += $"{pair.Key} × {pair.Value}\n";
+            }
         }
 
-        result += $"\n◆ 獲得コイン：{GetCoin}";
+        PlayerPrefs.Save();
 
+        result += $"\nDropped Coin : {GetCoin}";
         resultInfoText.text = result;
-    
+
+        Debug.Log(result);
+
         PlayerData.AddCoin(GetCoin);
+        collectedCharacters.Clear();
     }
 }

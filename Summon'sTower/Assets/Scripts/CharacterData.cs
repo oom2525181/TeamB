@@ -14,4 +14,5 @@ public class CharacterData: ScriptableObject
     [Header("Ownership")]                     //Inspecterで見やすくするやつ
     public bool isOwned;                      //キャラを持ってるかどうか
     public bool DefaultCharacter = false;     //デフォルトキャラかどうか
+    public int collectCount = 0;             //所持数
 }

@@ -37,11 +37,19 @@ public class PartyManager : MonoBehaviour
             // Š‰Šú‰»
             foreach (var c in allCharacters)
             {
-                c.isOwned = c.DefaultCharacter;
-                if (c.isOwned) // Š‚µ‚Ä‚¢‚éê‡‚¾‚¯•Û‘¶
+                c.collectCount = 0;
+
+                if (c.DefaultCharacter)
                 {
+                    c.collectCount = 1;
+                    c.isOwned = true;
                     PlayerData.SaveCharacterOwned(c.characterName);
                 }
+
+                //if (c.isOwned) // Š‚µ‚Ä‚¢‚éê‡‚¾‚¯•Û‘¶
+                //{
+                //    PlayerData.SaveCharacterOwned(c.characterName);
+                //}
             }
         }
         else
