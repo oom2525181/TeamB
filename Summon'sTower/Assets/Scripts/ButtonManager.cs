@@ -103,9 +103,9 @@ public class ButtonManager: MonoBehaviour
                 float y = 0f;
                 switch (lane)
                 {
-                    case 0: y =  2.5f; break;
-                    case 1: y = -0.68f; break;
-                    case 2: y =  -3f; break;
+                    case 0: y =  2.2f; break;
+                    case 1: y = -1.2f; break;
+                    case 2: y =  -2.5f; break;
                         // •K—v‚É‰ž‚¶‚Ä’Ç‰Á
                 }
 

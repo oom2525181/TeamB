@@ -196,12 +196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 0
-  maxhp: 40
+  maxhp: 60
   hp: 40
-  damage: 5
+  damage: 8
   damageInterval: 15
   GetChance: 0.03
-  GetCoin: 3
+  GetCoin: 8
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0

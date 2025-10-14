@@ -202,7 +202,7 @@ MonoBehaviour:
   damage: 10
   damageInterval: 1
   GetChance: 0.05
-  GetCoin: 4
+  GetCoin: 10
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 2
