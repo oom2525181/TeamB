@@ -199,15 +199,19 @@ MonoBehaviour:
   maxhp: 55
   hp: 0
   damage: 5
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  GetChance: 0.1
   damageInterval: 1
-  poison: 0
+  GetChance: 0.08
+  GetCoin: 5
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
+  UpGradeCount: 0
+  maxhp2: 0
+  damage2: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  poison: 0
   noReverse: 1
   attacker: {fileID: 0}
   spawner: {fileID: 0}

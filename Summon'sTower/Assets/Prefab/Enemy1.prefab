@@ -200,7 +200,7 @@ MonoBehaviour:
   hp: 0
   damage: 5
   damageInterval: 1
-  GetChance: 1
+  GetChance: 0.04
   GetCoin: 4
   Type_Metal: 0
   OneAttack: 0
