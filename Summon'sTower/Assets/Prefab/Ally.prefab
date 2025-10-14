@@ -107,20 +107,24 @@ MonoBehaviour:
   maxhp: 12
   hp: 0
   damage: 5
+  damageInterval: 1
+  GetChance: 0
+  Type_Metal: 0
+  OneAttack: 0
+  PoisonOnAttack: 0
+  UpGradeCount: 1
+  maxhp2: 0
+  damage2: 0
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
-  isHealer: 0
-  healAmount: 0
-  healInterval: 2
-  damageInterval: 1
   poison: 0
-  Type_Metal: 0
-  OneAttack: 0
   noReverse: 0
+  attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: ab28eb6899d05384e8a56118a1a8efc3, type: 3}
+  rewardCharacterName: AllyKnight1
 --- !u!58 &7169530610137959303
 CircleCollider2D:
   m_ObjectHideFlags: 0

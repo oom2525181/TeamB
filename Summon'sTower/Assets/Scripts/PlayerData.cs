@@ -29,7 +29,7 @@ public class PlayerData
             //Debug.Log($"保存: StageCleared = {stageNumber}");
         }
     }
-
+    
     public static int GetLastClearedStage()
     {
         return PlayerPrefs.GetInt("StageCleared", 0);
@@ -38,6 +38,29 @@ public class PlayerData
     public static bool IsStageCleared(int stageNumber)
     {
         return GetLastClearedStage() >= stageNumber;
+    }
+
+    // キャラの所持数
+    public static void SaveCollectCount(string characterName, int count)
+    {
+        PlayerPrefs.SetInt(characterName + "_CollectCount", count);
+        PlayerPrefs.Save();
+    }
+
+    public static int LoadCollectCount(string characterName)
+    {
+        return PlayerPrefs.GetInt(characterName + "_CollectCount", 0);
+    }
+    //アップグレードした回数
+    public static void SaveUpgradeCount(string characterName, int count)
+    {
+        PlayerPrefs.SetInt(characterName + "_UpgradeCount", count);
+        PlayerPrefs.Save();
+    }
+
+    public static int LoadUpgradeCount(string characterName)
+    {
+        return PlayerPrefs.GetInt(characterName + "_UpgradeCount", 0);
     }
 
 

@@ -96,6 +96,15 @@ public class GameDirector : MonoBehaviour
             collectedCharacters[characterName] = 1;
         }
     }
+
+
+    public void AddCoin(int num)
+    {
+        GetCoin += num;
+        Debug.Log($"コイン獲得: +{num}（合計 {GetCoin}）");
+    }
+
+
     public void ShowResultInfo()
     {
         if (resultShown) return;  // すでに表示済みなら何もしない
@@ -103,15 +112,21 @@ public class GameDirector : MonoBehaviour
 
         resultInfoPanel.SetActive(true);
 
-        string result = "Dropped Characters\n";
+        string result = " Dropped Characters\n";
 
         foreach (var pair in collectedCharacters)
         {
             CharacterData rewardCharacter = PartyManager.Instance.GetCharacterByName(pair.Key);
             if (rewardCharacter != null)
             {
-                rewardCharacter.collectCount += pair.Value;
-                PlayerPrefs.SetInt(rewardCharacter.characterName + "_Count", rewardCharacter.collectCount);
+                // 所持数の保存
+                int currentCount = PlayerData.LoadCollectCount(rewardCharacter.characterName);
+                currentCount += pair.Value;
+                rewardCharacter.collectCount = currentCount;
+
+                // 保存
+                PlayerData.SaveCollectCount(rewardCharacter.characterName, currentCount);
+
 
                 if (!rewardCharacter.isOwned)
                 {
@@ -130,7 +145,7 @@ public class GameDirector : MonoBehaviour
 
         PlayerPrefs.Save();
 
-        result += $"\nDropped Coin : {GetCoin}";
+        result += $"\n    Dropped Coin : {GetCoin}";
         resultInfoText.text = result;
 
         Debug.Log(result);

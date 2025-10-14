@@ -10,9 +10,18 @@ public class CharacterData: ScriptableObject
     public float cooldownTime = 1f;  //キャラ召喚のクールタイム
     public GameObject prefab;        // キャラのPrefab
 
+    public int UpGradeCount;        // アップグレード回数
+
 
     [Header("Ownership")]                     //Inspecterで見やすくするやつ
     public bool isOwned;                      //キャラを持ってるかどうか
     public bool DefaultCharacter = false;     //デフォルトキャラかどうか
     public int collectCount = 0;             //所持数
+
+    public void LoadFromPrefs()
+    {
+        UpGradeCount = PlayerPrefs.GetInt(characterName + "_Upgrade", 0);
+        collectCount = PlayerPrefs.GetInt(characterName + "_Count", 0);
+        isOwned = PlayerPrefs.GetInt(characterName + "_Owned", 0) == 1;
+    }
 }

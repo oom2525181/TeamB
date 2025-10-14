@@ -199,21 +199,24 @@ MonoBehaviour:
   maxhp: 35
   hp: 0
   damage: 3
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  GetChance: 0
   damageInterval: 0.1
-  poison: 0
+  GetChance: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
+  UpGradeCount: 1
+  maxhp2: 0
+  damage2: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  poison: 0
   noReverse: 0
   attacker: {fileID: 0}
   spawner: {fileID: 0}
   gameDirector: {fileID: 0}
   sound1: {fileID: 8300000, guid: 3b89eec2a974a1a44bbc2f3d83da85ea, type: 3}
-  rewardCharacterName: 
+  rewardCharacterName: samurai
 --- !u!58 &7341996721157793562
 CircleCollider2D:
   m_ObjectHideFlags: 0

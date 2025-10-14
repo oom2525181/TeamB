@@ -8,21 +8,31 @@ public class GoTower : MonoBehaviour
 {
     //private float speed = 5.0f;
     [SerializeField] Transform target;  //移動する場所、目的地
+
+    [Header("キャラのステータス")]
     [SerializeField] float speed;       //移動速度
-    [SerializeField] float maxhp;          //最大体力
+    [SerializeField] float maxhp;       //基礎体力
    /* [HideInInspector]*/ public float hp;
-    [SerializeField] float damage;      //与えるダメージ
-    //[SerializeField] private float detectDistance = 5f; //感知する距離
-    [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
-    [SerializeField] float GetChance;      //この敵をゲットできる確率
-    //[SerializeField] private int direction = 1;         //敵を感知する方向用
+    [SerializeField] float damage;      //基礎与えるダメージ
     public float damageInterval = 1f;  //ダメージを与える間隔
-    public int poison = 0;             //毒のダメージを受ける回数
-    private float poisonTimer = 0f;    //毒の時間経過用
-    private float lastDamageTime = 0f; //最後にダメージを与えた時間
+    [SerializeField] float GetChance;      //この敵をゲットできる確率
+    [SerializeField] float GetCoin;      //この敵が落とすコインの数
     public bool Type_Metal = false;    //被ダメージ1ダメージ固定
     public bool OneAttack = false;     //1回攻撃したら消える
     public int PoisonOnAttack = 0;     //与える毒の量
+    [Header("アップグレード補正用")]
+    public int UpGradeCount = 0;           //アップグレード回数
+    public float maxhp2;              //アップグレード補正の最大体力
+    public float damage2;             //アップグレード補正の与ダメ
+
+    [Header("その他")]
+    //[SerializeField] private float detectDistance = 5f; //感知する距離
+    [SerializeField] private LayerMask enemyLayer;      //感知するエンティティの種類の設定用
+    //[SerializeField] private int direction = 1;         //敵を感知する方向用
+    public int poison = 0;             //毒のダメージを受ける回数
+    private float poisonTimer = 0f;    //毒の時間経過用
+    private float lastDamageTime = 0f; //最後にダメージを与えた時間
+
     //private bool isHit = false;        //ぶつかっているかどうか
     public bool noReverse = false;     //反転処理するかどうか
 
@@ -58,7 +68,26 @@ public class GoTower : MonoBehaviour
             speed = 1.5f;
         if (maxhp <= 0) //デフォルトの体力
             maxhp = 40;
-       
+        if (damage <= 0) //デフォルトの与ダメ
+            damage = 5;
+
+        partyManager = FindFirstObjectByType<PartyManager>();
+
+        if (CompareTag("Ally"))
+        {
+            if (!string.IsNullOrEmpty(rewardCharacterName) && partyManager != null)
+            {
+                CharacterData data = partyManager.GetCharacterByName(rewardCharacterName);
+                if (data != null)
+                {
+                    UpGradeCount = data.UpGradeCount;
+                }
+            }
+
+            maxhp2 = maxhp + ((maxhp / 10) * UpGradeCount);
+            damage2 = damage + ((damage / 10) * UpGradeCount);
+        }
+
         hp = maxhp;
         //targetの設定
         if (CompareTag("Ally")) 
@@ -72,7 +101,7 @@ public class GoTower : MonoBehaviour
 
         particleManager = FindFirstObjectByType<ParticleManager>();
         audioSource = GetComponent<AudioSource>();
-        partyManager = FindFirstObjectByType<PartyManager>();
+
 }
 /* public void OnCollisionEnter2D(Collision2D other)
  {
@@ -219,7 +248,7 @@ void Update()
             if (poisonTimer >= 0.5f)
             {
                 poisonTimer = 0f;
-                hp -= (maxhp * 0.015f) + (hp * 0.01f) + 1;
+                hp -= (maxhp2 * 0.015f) + (hp * 0.01f) + 1;
                 ParticleManager.Instance.PlayEffect("Poison", transform.position);
                 poison--;
                 if (hp <= 0)
@@ -334,14 +363,14 @@ void Update()
                     enemyUnit.poison += PoisonOnAttack;
                 }
                 enemyUnit.attacker = this.gameObject;
-                enemyUnit.TakeDamage(damage);
+                enemyUnit.TakeDamage(damage2);
                 if(OneAttack)
                     Destroy(gameObject);
             }
             else if (enemyTower != null)
             {
             
-                enemyTower.TakeDamage(damage);
+                enemyTower.TakeDamage(damage2);
                 if (OneAttack)
                     Destroy(gameObject);
             }
@@ -400,8 +429,14 @@ void Update()
                             gameDirector.AddCharacter(rewardCharacterName);
                             Debug.Log($"{rewardCharacter.characterName} を獲得しました！");
                          }
-        }
+                    }
                 }
+
+                float coinReward = this.GetCoin; // 自分（倒された敵）の GetCoin
+                gameDirector.AddCoin((int)coinReward);
+                Debug.Log($"{name} を倒して {coinReward} コインを獲得！");
+
+                Destroy(gameObject);
             }
             Destroy(gameObject);
         }

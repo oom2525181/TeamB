@@ -37,13 +37,18 @@ public class PartyManager : MonoBehaviour
             // Š‰Šú‰»
             foreach (var c in allCharacters)
             {
-                c.collectCount = 0;
+                c.isOwned = PlayerData.IsCharacterOwned(c.characterName);
+                c.UpGradeCount = PlayerData.LoadUpgradeCount(c.characterName);
+                c.collectCount = PlayerData.LoadCollectCount(c.characterName);
+
 
                 if (c.DefaultCharacter)
                 {
-                    c.collectCount = 1;
                     c.isOwned = true;
+                    if(c.collectCount == 0)
+                    c.collectCount = 1;
                     PlayerData.SaveCharacterOwned(c.characterName);
+                    PlayerData.SaveCollectCount(c.characterName, c.collectCount);
                 }
 
                 //if (c.isOwned) // Š‚µ‚Ä‚¢‚éê‡‚¾‚¯•Û‘¶

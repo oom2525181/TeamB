@@ -7,6 +7,7 @@ public class GameReseter : MonoBehaviour
     void Awake()
     {
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
     }
     // Start is called before the first frame update
     void Start()

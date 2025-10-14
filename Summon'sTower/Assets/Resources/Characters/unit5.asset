@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0e4560e3ee87a43ab109c0cc670aa5, type: 3}
   m_Name: unit5
   m_EditorClassIdentifier: 
-  characterName: knight3
+  characterName: AllyKnight3
   icon: {fileID: -2647727712593730487, guid: 1ad5333e733f8844d8d156183990fc16, type: 3}
   cost: 30
   count: 1
   cooldownTime: 1
   prefab: {fileID: 3855335589145868469, guid: 0a891f1f45b8fe04485f9267421b029a, type: 3}
-  isOwned: 1
+  UpGradeCount: 0
+  isOwned: 0
   DefaultCharacter: 0
+  collectCount: 0
