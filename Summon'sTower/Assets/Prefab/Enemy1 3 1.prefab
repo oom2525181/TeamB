@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3480095934253138810}
   - component: {fileID: 2338233169324989048}
   m_Layer: 6
-  m_Name: Enemy1.2
+  m_Name: Enemy1 3 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,12 +196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 0
-  maxhp: 55
+  maxhp: 75
   hp: 0
-  damage: 9
+  damage: 6
   damageInterval: 1
-  GetChance: 0.08
-  GetCoin: 5
+  GetChance: 0.05
+  GetCoin: 6
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0

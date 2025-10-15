@@ -198,7 +198,7 @@ MonoBehaviour:
   speed: 0
   maxhp: 40
   hp: 0
-  damage: 6
+  damage: 8
   damageInterval: 1
   GetChance: 0.04
   GetCoin: 4

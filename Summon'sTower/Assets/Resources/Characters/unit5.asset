@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: AllyKnight3
   icon: {fileID: -2647727712593730487, guid: 1ad5333e733f8844d8d156183990fc16, type: 3}
-  cost: 30
+  cost: 20
   count: 1
   cooldownTime: 1
   prefab: {fileID: 3855335589145868469, guid: 0a891f1f45b8fe04485f9267421b029a, type: 3}
