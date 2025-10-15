@@ -162,7 +162,7 @@ public class EnemySpawner: MonoBehaviour
     {
         for (int i = 0; i < wave.count; i++)
         {
-            float[] yPositions = { 2.2f, -1.2f, -1.25f, -2.5f };
+           //   float[] yPositions = { 2.2f, -1.2f, 2.5f };
 
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
 
@@ -178,8 +178,7 @@ public class EnemySpawner: MonoBehaviour
                 continue;
             }
 
-            //float y = Random.Range(-0.88f, -0.48f);
-            float y = yPositions[Random.Range(0, yPositions.Length)];
+            float y = Random.Range(-0.88f, -0.48f);
             Instantiate(prefab, new Vector3(7.35f, y, 0), Quaternion.identity);
         }
     }
