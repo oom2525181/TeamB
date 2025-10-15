@@ -6,8 +6,10 @@ public class GameReseter : MonoBehaviour
 {
     void Awake()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
+        //PlayerPrefs.DeleteAll();
+        //PlayerPrefs.Save();
+        PlayerData.AddCoin(99999);
+        PlayerData.SaveStageCleared(6);
     }
     // Start is called before the first frame update
     void Start()
