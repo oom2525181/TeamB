@@ -16,7 +16,9 @@ MonoBehaviour:
   icon: {fileID: 8410785239459973250, guid: 402bcfa2bcb19f24b8082f38a2abd452, type: 3}
   cost: 20
   count: 1
-  cooldownTime: 1
+  cooldownTime: 3
   prefab: {fileID: 3855335589145868469, guid: 10eaf76b31100964cbbf6b2221e77bbc, type: 3}
+  UpGradeCount: 0
   isOwned: 0
   DefaultCharacter: 0
+  collectCount: 0

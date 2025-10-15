@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fd01272badbd9741968b23970a203f6, type: 3}
+  m_Name: Stage7
+  m_EditorClassIdentifier: 
+  stageNumber: 7
+  waves:
+  - enemyPrefabs:
+    - {fileID: 1000010755293042, guid: 5f88acb21f57ce546953e5b565ab7068, type: 3}
+    count: 1
+    interval: 10
+    isLoop: 0
+    timer: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 5fcee904bc3324e43ba5ec658979726f, type: 3}
+    count: 2
+    interval: 20
+    isLoop: 1
+    timer: 19.680119
+  isCleared: 0

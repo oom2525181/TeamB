@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: enemy Knight2
   icon: {fileID: -3868812660829053132, guid: 000d172e23c3bff438c7fdef449b2ee6, type: 3}
-  cost: 25
+  cost: 30
   count: 1
-  cooldownTime: 1.6
+  cooldownTime: 1.8
   prefab: {fileID: 3214252275018464279, guid: 71b6ae780c7ed5d4bba9c8da609b03c3, type: 3}
   UpGradeCount: 0
-  isOwned: 0
+  isOwned: 1
   DefaultCharacter: 0
-  collectCount: 0
+  collectCount: 1

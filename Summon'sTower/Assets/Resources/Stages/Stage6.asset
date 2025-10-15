@@ -17,19 +17,19 @@ MonoBehaviour:
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: e88c16171fed8b649851394539be6108, type: 3}
     count: 1
-    interval: 3
+    interval: 6
     isLoop: 1
     timer: 2.893649
   - enemyPrefabs:
-    - {fileID: 1000010755293042, guid: 17821887495cf9240a8a3005fd369bf5, type: 3}
+    - {fileID: 9110708590597508679, guid: 9a3112926e8e68a448180b146e4b47a3, type: 3}
     count: 1
     interval: 4
     isLoop: 1
     timer: 1.0672616
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 5fcee904bc3324e43ba5ec658979726f, type: 3}
+    - {fileID: 9110708590597508679, guid: 3e51cfd252f472c47acb943e19495113, type: 3}
     count: 1
-    interval: 5
+    interval: 12
     isLoop: 1
     timer: 2.0806422
   - enemyPrefabs:

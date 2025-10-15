@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: AllyKnight1
   icon: {fileID: 1803408233877473036, guid: 2256b36290f13ca4cbb472b6be246150, type: 3}
-  cost: 15
+  cost: 20
   count: 1
-  cooldownTime: 2
+  cooldownTime: 1.5
   prefab: {fileID: 3214252275018464279, guid: 0f10f5d0ccff1ce4faa8616540be6131, type: 3}
   UpGradeCount: 0
   isOwned: 1
   DefaultCharacter: 1
-  collectCount: 0
+  collectCount: 1
