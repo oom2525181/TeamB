@@ -3594,7 +3594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4520e348a8fb0ed499a2b292464c5815, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHP: 150
+  MaxHP: 300
   hp: 0
   spawner: {fileID: 1411599182}
   gameDirector: {fileID: 0}
