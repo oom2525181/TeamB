@@ -162,7 +162,7 @@ public class EnemySpawner: MonoBehaviour
     {
         for (int i = 0; i < wave.count; i++)
         {
-            float[] yPositions = { 2.2f, -1.2f, 2.5f };
+            float[] yPositions = { 2.2f, -1.2f, -1.25f, -2.5f };
 
             var prefab = wave.enemyPrefabs[Random.Range(0, wave.enemyPrefabs.Length)];
 
