@@ -5652,7 +5652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves: []
-  stageConfig: {fileID: 11400000, guid: b7ca3141ccfae1042929db9077f61dff, type: 2}
+  stageConfig: {fileID: 11400000, guid: 5a324bd0e5a74924db0775d6b79ffa08, type: 2}
   gameDirector: {fileID: 0}
 --- !u!4 &1411599183
 Transform:

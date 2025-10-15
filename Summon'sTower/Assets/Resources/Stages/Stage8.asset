@@ -14,14 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 0
   waves:
-  - enemyPrefabs: []
-    count: 0
-    interval: 0
-    isLoop: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 8d72782602747ec42be0e12bdccfc433, type: 3}
+    count: 1
+    interval: 12
+    isLoop: 1
     timer: 0
-  - enemyPrefabs: []
-    count: 0
-    interval: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: e88c16171fed8b649851394539be6108, type: 3}
+    count: 2
+    interval: 12
+    isLoop: 1
+    timer: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 5fcee904bc3324e43ba5ec658979726f, type: 3}
+    count: 1
+    interval: 20
     isLoop: 0
     timer: 0
   isCleared: 0
