@@ -17,7 +17,7 @@ MonoBehaviour:
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: 8d72782602747ec42be0e12bdccfc433, type: 3}
     count: 1
-    interval: 12
+    interval: 5
     isLoop: 1
     timer: 0
   - enemyPrefabs:
@@ -29,7 +29,19 @@ MonoBehaviour:
   - enemyPrefabs:
     - {fileID: 9110708590597508679, guid: 5fcee904bc3324e43ba5ec658979726f, type: 3}
     count: 1
-    interval: 20
+    interval: 10
+    isLoop: 0
+    timer: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 8d72782602747ec42be0e12bdccfc433, type: 3}
+    count: 1
+    interval: 5
+    isLoop: 0
+    timer: 0
+  - enemyPrefabs:
+    - {fileID: 9110708590597508679, guid: 8d72782602747ec42be0e12bdccfc433, type: 3}
+    count: 2
+    interval: 5
     isLoop: 0
     timer: 0
   isCleared: 0
