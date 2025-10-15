@@ -106,8 +106,9 @@ MonoBehaviour:
   maxhp: 60
   hp: 0
   damage: 10
-  damageInterval: 1
+  damageInterval: 2
   GetChance: 0
+  GetCoin: 0
   Type_Metal: 0
   OneAttack: 0
   PoisonOnAttack: 0
