@@ -15,69 +15,9 @@ MonoBehaviour:
   stageNumber: 3
   waves:
   - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
+    - {fileID: 9110708590597508679, guid: fbbca73f71642184684ac3cc539e7a58, type: 3}
     count: 1
     interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 2
-    isLoop: 0
-    timer: 0.205183
-  - enemyPrefabs:
-    - {fileID: 9110708590597508679, guid: 9d518080be6d66142bb2a9dd54761b7a, type: 3}
-    count: 1
-    interval: 12
     isLoop: 1
-    timer: 0.205183
+    timer: 1.6108768
   isCleared: 1
