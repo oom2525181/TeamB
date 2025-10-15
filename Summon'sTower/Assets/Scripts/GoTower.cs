@@ -87,8 +87,13 @@ public class GoTower : MonoBehaviour
             maxhp2 = maxhp + ((maxhp / 10) * UpGradeCount);
             damage2 = damage + ((damage / 10) * UpGradeCount);
         }
+        if (CompareTag("Enemy"))
+        {
+            maxhp2 = maxhp;
+            damage2 = damage;
+        }
 
-        hp = maxhp;
+            hp = maxhp;
         //targetの設定
         if (CompareTag("Ally")) 
         target = GameObject.Find("Enemy'sTower").transform;
