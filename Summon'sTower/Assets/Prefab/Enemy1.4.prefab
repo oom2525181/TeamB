@@ -197,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   speed: 2
-  maxhp: 90
+  maxhp: 70
   hp: 0
   damage: 20
   damageInterval: 1
